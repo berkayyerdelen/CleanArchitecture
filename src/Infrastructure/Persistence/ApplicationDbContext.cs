@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using Core.Interface;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence

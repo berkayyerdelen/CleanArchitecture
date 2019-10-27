@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -13,6 +13,26 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Entities\Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domains\Category\Commands\UpdateCategory\" />
+    <Folder Include="Domains\Category\Commands\DeleteCategory\" />
+    <Folder Include="Domains\Customer\Commands\CreateCategory\" />
+    <Folder Include="Domains\Customer\Commands\DeleteCategory\" />
+    <Folder Include="Domains\Customer\Commands\" />
+    <Folder Include="Domains\Customer\Commands\UpdateCategory\" />
+    <Folder Include="Domains\OperationClaims\Commands\" />
+    <Folder Include="Domains\OperationClaims\Commands\CreateCategory\" />
+    <Folder Include="Domains\OperationClaims\Commands\DeleteCategory\" />
+    <Folder Include="Domains\OperationClaims\Commands\UpdateCategory\" />
+    <Folder Include="Domains\Order\Commands\" />
+    <Folder Include="Domains\Order\Commands\CreateCategory\" />
+    <Folder Include="Domains\Order\Commands\DeleteCategory\" />
+    <Folder Include="Domains\Order\Commands\UpdateCategory\" />
+    <Folder Include="Domains\Product\Commands\CreateCategory\" />
+    <Folder Include="Domains\Product\Commands\DeleteCategory\" />
+    <Folder Include="Domains\Product\Commands\UpdateCategory\" />
   </ItemGroup>
 
 </Project>
