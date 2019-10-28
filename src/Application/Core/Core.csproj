@@ -16,21 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domains\Customer\Commands\CreateCategory\" />
-    <Folder Include="Domains\Customer\Commands\DeleteCategory\" />
     <Folder Include="Domains\Customer\Commands\" />
-    <Folder Include="Domains\Customer\Commands\UpdateCategory\" />
     <Folder Include="Domains\OperationClaims\Commands\" />
-    <Folder Include="Domains\OperationClaims\Commands\CreateCategory\" />
-    <Folder Include="Domains\OperationClaims\Commands\DeleteCategory\" />
-    <Folder Include="Domains\OperationClaims\Commands\UpdateCategory\" />
     <Folder Include="Domains\Orders\Commands\" />
-    <Folder Include="Domains\Orders\Commands\CreateCategory\" />
-    <Folder Include="Domains\Orders\Commands\DeleteCategory\" />
-    <Folder Include="Domains\Orders\Commands\UpdateCategory\" />
-    <Folder Include="Domains\Product\Commands\CreateCategory\" />
-    <Folder Include="Domains\Product\Commands\DeleteCategory\" />
-    <Folder Include="Domains\Product\Commands\UpdateCategory\" />
+    <Folder Include="Domains\Product\Commands\" />
   </ItemGroup>
 
 </Project>
