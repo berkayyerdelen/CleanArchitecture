@@ -1,10 +1,8 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Core.Exceptions;
 using Core.Interface;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Core.Domains.Category.Commands.DeleteCategory
 {
@@ -15,7 +13,7 @@ namespace Core.Domains.Category.Commands.DeleteCategory
         {
             private readonly IApplicationDbContext _context;
 
-            public Handler(IApplicationDbContext context, IMediator mediator)
+            public Handler(IApplicationDbContext context)
             {
                 _context = context;
             }

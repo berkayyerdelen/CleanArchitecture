@@ -26,9 +26,9 @@ namespace Core.Domains.Category.Commands.UpdateCategory
                 {
                     throw new NotFoundException(nameof(Entities.Category),"Object could not found");
                 }
-                entity.CategoryName = request.CategoryName ??request.CategoryName;
-                entity.Description = request.Description ?? request.Description;
-                entity.Picture = request.Pictures ?? request.Pictures;
+                entity.CategoryName = request.CategoryName ?? entity.CategoryName;
+                entity.Description = request.Description ?? entity.Description;
+                entity.Picture = request.Pictures ?? entity.Picture;
                 await _context.SaveChangesAsync(cancellationToken);
                 return Unit.Value;
             }

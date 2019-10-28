@@ -9,7 +9,7 @@ namespace Core.Domains.Category.Queries.GetCategoryList
     {
         public int Id { get; set; }
         public string CategoryName { get; set; }
-        public List<Product> Product { get; set; }
+        public List<Entities.Product> Product { get; set; }
         public void CreateMappings(Profile configuration)
         {
             configuration.CreateMap<Entities.Category, CategoryLookupModel>()
