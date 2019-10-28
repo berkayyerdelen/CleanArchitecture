@@ -31,7 +31,7 @@ namespace WabApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(CreateCustomerCommand));
+            services.AddMediatR(typeof(CreateCategoryCommand));
             services.AddConfiguredDbContext(Configuration);
             services.AddScoped<IApplicationDbContext>(s => s.GetService<ApplicationDbContext>());
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });

@@ -2,7 +2,7 @@
 
 namespace Core.Domains.Category.Commands.CreateCategory
 {
-    public class CreateCategoryCommandValidator:AbstractValidator<CreateCustomerCommand>
+    public class CreateCategoryCommandValidator:AbstractValidator<CreateCategoryCommand>
     {
         public CreateCategoryCommandValidator()
         {

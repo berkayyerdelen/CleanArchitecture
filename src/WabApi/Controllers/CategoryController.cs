@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Core.Domains.Category.Commands.CreateCategory;
+using Core.Domains.Category.Commands.DeleteCategory;
+using Core.Domains.Category.Commands.UpdateCategory;
+using Core.Domains.Category.Queries.GetCategoryList;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +24,27 @@ namespace WabApi.Controllers
             _mediator = mediator;
         }
         [HttpPost]
-        public async Task<IActionResult> CreateCustomer(CreateCustomerCommand request, CancellationToken ct)
+        public async Task<Unit> CreateCategory(CreateCategoryCommand request, CancellationToken ct)
         {
-            await _mediator.Send(request, ct);
-            return Ok();
+            return await _mediator.Send(request, ct);
+        }
+
+        [HttpDelete]
+        public async Task<Unit> DeleteCategory(DeleteCategoryCommand request, CancellationToken ct)
+        {
+            return await _mediator.Send(request, ct);
+        }
+
+        [HttpPut]
+        public async Task<Unit> UpdateCategory(UpdateCategoryCommand request, CancellationToken ct)
+        {
+            return await _mediator.Send(request, ct);
+        }
+
+        [HttpGet]
+        public async Task<CategoryListViewModel> GetCategoryList(CancellationToken ct)
+        {
+            return await _mediator.Send(new GetCategoryListQuery(), ct);
         }
     }
 }

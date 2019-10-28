@@ -16,8 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domains\Category\Commands\UpdateCategory\" />
-    <Folder Include="Domains\Category\Commands\DeleteCategory\" />
     <Folder Include="Domains\Customer\Commands\CreateCategory\" />
     <Folder Include="Domains\Customer\Commands\DeleteCategory\" />
     <Folder Include="Domains\Customer\Commands\" />
@@ -26,10 +24,10 @@
     <Folder Include="Domains\OperationClaims\Commands\CreateCategory\" />
     <Folder Include="Domains\OperationClaims\Commands\DeleteCategory\" />
     <Folder Include="Domains\OperationClaims\Commands\UpdateCategory\" />
-    <Folder Include="Domains\Order\Commands\" />
-    <Folder Include="Domains\Order\Commands\CreateCategory\" />
-    <Folder Include="Domains\Order\Commands\DeleteCategory\" />
-    <Folder Include="Domains\Order\Commands\UpdateCategory\" />
+    <Folder Include="Domains\Orders\Commands\" />
+    <Folder Include="Domains\Orders\Commands\CreateCategory\" />
+    <Folder Include="Domains\Orders\Commands\DeleteCategory\" />
+    <Folder Include="Domains\Orders\Commands\UpdateCategory\" />
     <Folder Include="Domains\Product\Commands\CreateCategory\" />
     <Folder Include="Domains\Product\Commands\DeleteCategory\" />
     <Folder Include="Domains\Product\Commands\UpdateCategory\" />
