@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Core.Domains.Category.Commands.CreateCategory;
 using Core.Domains.Category.Commands.DeleteCategory;
 using Core.Domains.Category.Commands.UpdateCategory;
+using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Category.Queries.GetCategoryList;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -45,6 +46,13 @@ namespace WabApi.Controllers
         public async Task<CategoryListViewModel> GetCategoryList(CancellationToken ct)
         {
             return await _mediator.Send(new GetCategoryListQuery(), ct);
+        }
+
+        [HttpGet]
+        [Route("findbyname/{name}")]
+        public async Task<FindCategoryByNameViewModel> GetCategoryInfo(string name, CancellationToken ct)
+        {
+            return await _mediator.Send(new FindCategoryByNameQuery(name), ct);
         }
     }
 }
