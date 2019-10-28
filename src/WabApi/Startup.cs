@@ -1,6 +1,11 @@
 using System.Reflection;
 using AutoMapper;
 using Core.Domains.Category.Commands.CreateCategory;
+using Core.Domains.Category.Commands.DeleteCategory;
+using Core.Domains.Category.Commands.UpdateCategory;
+using Core.Domains.Product.Commands.CreateProduct;
+using Core.Domains.Product.Commands.DeleteProduct;
+using Core.Domains.Product.Commands.UpdateProduct;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -37,14 +42,20 @@ namespace WabApi
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
             services.AddMvc().AddFluentValidation();
             services.AddControllers();
+            Validations(services);
         }
 
-        //public void Validations(IServiceCollection service)
-        //{
-        //    service.AddSingleton<IValidator<DeleteCustomerCommand>, DeleteCustomerCommandValidator>();
-        //    service.AddSingleton<IValidator<CreateCustomerCommand>, CreateCustomerCommandValidator>();
-        //    service.AddSingleton<IValidator<UpdateCustomerCommand>, UpdateCustomerCommandValidator>();
-        //}
+        public IServiceCollection Validations(IServiceCollection service)
+        {
+           
+            service.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
+            service.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
+            service.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
+            service.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
+            service.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
+            service.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
+            return service;
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
