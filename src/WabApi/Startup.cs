@@ -19,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Persistence;
 
 
@@ -43,22 +44,25 @@ namespace WabApi
             services.AddMvc().AddFluentValidation();
             services.AddControllers();
             Validations(services);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
         }
 
-        public IServiceCollection Validations(IServiceCollection service)
-        {
-           
-            service.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
-            service.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
-            service.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
-            service.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
-            service.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
-            service.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
-            return service;
-        }
+      
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -74,6 +78,17 @@ namespace WabApi
             {
                 endpoints.MapControllers();
             });
+        }
+        public IServiceCollection Validations(IServiceCollection service)
+        {
+
+            service.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
+            service.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
+            service.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
+            service.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
+            service.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
+            service.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
+            return service;
         }
     }
 }
