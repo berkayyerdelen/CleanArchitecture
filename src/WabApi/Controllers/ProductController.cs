@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Core.Domains.Category.Commands.DeleteCategory;
-using Core.Domains.Category.Commands.UpdateCategory;
-using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Product.Commands.CreateProduct;
 using Core.Domains.Product.Commands.DeleteProduct;
 using Core.Domains.Product.Commands.UpdateProduct;
 using Core.Domains.Product.Queries.FindProductByName;
 using Core.Domains.Product.Queries.GetProductList;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WabApi.Controllers

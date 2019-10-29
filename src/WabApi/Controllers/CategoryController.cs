@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Core.Domains.Category.Commands.CreateCategory;
 using Core.Domains.Category.Commands.DeleteCategory;
@@ -9,7 +6,6 @@ using Core.Domains.Category.Commands.UpdateCategory;
 using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Category.Queries.GetCategoryList;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WabApi.Controllers
