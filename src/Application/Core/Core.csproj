@@ -20,7 +20,6 @@
     <Folder Include="Domains\Customer\Commands\" />
     <Folder Include="Domains\OperationClaims\Commands\" />
     <Folder Include="Domains\Orders\Commands\" />
-    <Folder Include="Domains\Product\Queries\" />
   </ItemGroup>
 
 </Project>

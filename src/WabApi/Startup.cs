@@ -1,5 +1,6 @@
 using System.Reflection;
 using AutoMapper;
+using Core.Comman.Infrastructure.AutoMapper;
 using Core.Domains.Category.Commands.CreateCategory;
 using Core.Domains.Category.Commands.DeleteCategory;
 using Core.Domains.Category.Commands.UpdateCategory;

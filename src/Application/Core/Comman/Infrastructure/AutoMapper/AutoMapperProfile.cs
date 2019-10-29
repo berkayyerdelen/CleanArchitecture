@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using AutoMapper;
+using Core.Infrastructure.AutoMapper;
 
-namespace Core.Infrastructure.AutoMapper
+namespace Core.Comman.Infrastructure.AutoMapper
 {
     public class AutoMapperProfile:Profile
     {
