@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="Domains\Customer\Commands\" />
     <Folder Include="Domains\OperationClaims\Commands\" />
+    <Folder Include="Domains\OperationClaims\Queries\" />
     <Folder Include="Domains\Orders\Commands\" />
   </ItemGroup>
 
