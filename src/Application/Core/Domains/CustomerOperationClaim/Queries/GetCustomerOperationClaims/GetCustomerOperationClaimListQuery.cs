@@ -1,15 +1,17 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims;
 using Core.Interface;
 using Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Core.Domains.CustomerOperationClaimList.Queries.GetCustomerOperationClaims
+namespace Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims
 {
     public class GetCustomerOperationClaimListQuery : IRequest<CustomerOperationClaimViewModel>
     {
@@ -25,12 +27,14 @@ namespace Core.Domains.CustomerOperationClaimList.Queries.GetCustomerOperationCl
             }
             public async Task<CustomerOperationClaimViewModel> Handle(GetCustomerOperationClaimListQuery request, CancellationToken cancellationToken)
             {
+              
                 var result = from operationclaim in _context.Set<OperationClaim>()
-                             join customerOperationClaim in _context.Set<CustomerOperationClaim>()
+                             join customerOperationClaim in _context.Set<Entities.CustomerOperationClaim>()
                                  on operationclaim.Id equals customerOperationClaim.OperationClaimId
                              where customerOperationClaim.CustomerId == request.Customer.Id
                              select new OperationClaim { Id = operationclaim.Id, Name = operationclaim.Name };
                 var model = await result.ProjectTo<GetCustomerOperationClaimLookupModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
+               
                 return new CustomerOperationClaimViewModel
                 {
                     CustomerOpertaionClaimList = model

@@ -2,7 +2,7 @@
 using Core.Interface.Mapping;
 using Entities;
 
-namespace Core.Domains.CustomerOperationClaimList.Queries.GetCustomerOperationClaims
+namespace Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims
 {
     public class GetCustomerOperationClaimLookupModel:IHaveCustomMapping
     {
