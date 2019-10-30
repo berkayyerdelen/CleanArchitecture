@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using Entities.Abstract;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Entities
 {

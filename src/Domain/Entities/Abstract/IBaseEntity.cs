@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Entities.Abstract
+﻿namespace Entities.Abstract
 {
     public interface IBaseEntity<T>
     {

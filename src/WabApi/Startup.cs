@@ -10,16 +10,12 @@ using Core.Domains.Product.Commands.UpdateProduct;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
-using Core.Infrastructure.AutoMapper;
 using Core.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Persistence;
 
@@ -39,6 +35,7 @@ namespace WabApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(CreateCategoryCommand));
+            services.AddMediatR(typeof(UpdateCategoryCommand));
             services.AddConfiguredDbContext(Configuration);
             services.AddScoped<IApplicationDbContext>(s => s.GetService<ApplicationDbContext>());
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });

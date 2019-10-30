@@ -6,8 +6,8 @@ namespace Core.Domains.Category.Commands.UpdateCategory
     {
         public UpdateCategoryCommandValidator()
         {
-            RuleFor(x => x.CategoryName).Length(100);
-            RuleFor(x => x.Description).Length(100);
+            RuleFor(x => x.CategoryName).MaximumLength(100);
+            RuleFor(x => x.Description).MaximumLength(100);
             RuleFor(x => x.Id).NotNull().NotEmpty();
         }
     }

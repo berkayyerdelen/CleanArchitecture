@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using Core.Comman.Extensions;
 using Core.Comman.Security.Encryption;
 using Entities;
