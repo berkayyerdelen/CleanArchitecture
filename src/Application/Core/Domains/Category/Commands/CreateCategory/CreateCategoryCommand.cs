@@ -17,7 +17,10 @@ namespace Core.Domains.Category.Commands.CreateCategory
             private readonly IApplicationDbContext _context;
 
             public Handler(IApplicationDbContext context, IMediator mediator)
-                => (_mediator, _context) = (mediator, context);
+            {
+                _context = context;
+                _mediator = mediator;
+            }
 
             public async Task<Unit> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
             {

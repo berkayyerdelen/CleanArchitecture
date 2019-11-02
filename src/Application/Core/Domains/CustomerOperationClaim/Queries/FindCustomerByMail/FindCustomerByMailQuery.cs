@@ -14,15 +14,20 @@ namespace Core.Domains.CustomerOperationClaim.Queries.FindCustomerByMail
         public string Email { get; set; }
 
         public FindCustomerByMailQuery(string email)
-            => Email = email;
-
+        {
+            Email = email;
+        }
         public class Handler : IRequestHandler<FindCustomerByMailQuery, FindCustomerByMailViewModel>
         {
             private readonly IApplicationDbContext _context;
             private readonly IMapper _mapper;
-            public Handler(IApplicationDbContext context, IMapper mapper)
-                => (_context, _mapper) = (context, mapper);
 
+            public Handler(IApplicationDbContext context, IMapper mapper)
+            {
+                _context = context;
+                _mapper = mapper;
+            }
+            
             public async Task<FindCustomerByMailViewModel> Handle(FindCustomerByMailQuery request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Set<Customer>().ProjectTo<FindCustomerByMailLookUpModel>(_mapper.ConfigurationProvider)

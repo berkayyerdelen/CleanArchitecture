@@ -13,13 +13,15 @@ namespace Core.Domains.Category.Commands.DeleteCategory
         {
             private readonly IApplicationDbContext _context;
 
-            public Handler(IApplicationDbContext context) 
-                => _context = context;
+            public Handler(IApplicationDbContext context)
+            {
+                _context = context;
+            }
           
             public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Set<Entities.Category>().FindAsync(request.Id);
-                if (entity== null)
+                if (entity is null)
                 {
                     throw new NotFoundException(nameof(Entities.Category),request.Id);
                 }

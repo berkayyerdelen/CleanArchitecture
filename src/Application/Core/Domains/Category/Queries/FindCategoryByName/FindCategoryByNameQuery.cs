@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Core.Exceptions;
 using Core.Interface;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,10 @@ namespace Core.Domains.Category.Queries.FindCategoryByName
             {
                var entity = await _context.Set<Entities.Category>().ProjectTo<FindCategoryByNameLookupModel>(_mapper.ConfigurationProvider)
                    .SingleOrDefaultAsync(x => x.CategoryName == request.CategoryName,cancellationToken);
+               if (entity is null)
+               {
+                   throw  new NotFoundException(nameof(Entities.Category),request.CategoryName);
+               }
                return new FindCategoryByNameViewModel
                {
                    CategoryName = entity.CategoryName,
