@@ -16,9 +16,8 @@ namespace Core.Domains.Category.Commands.UpdateCategory
             private readonly IApplicationDbContext _context;
 
             public Handler(IApplicationDbContext context)
-            {
-                _context = context;
-            }
+                => _context = context;
+          
             public async Task<Unit> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Set<Entities.Category>().SingleOrDefaultAsync(x => x.Id == request.Id,cancellationToken);

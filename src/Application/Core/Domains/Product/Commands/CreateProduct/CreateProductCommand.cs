@@ -19,9 +19,8 @@ namespace Core.Domains.Product.Commands.CreateProduct
         {
             public readonly IApplicationDbContext _context;
             public Handler(IApplicationDbContext context)
-            {
-                _context = context;
-            }
+                => _context=context;
+
             public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
             {
                 var entity = new Entities.Product()

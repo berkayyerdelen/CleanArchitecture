@@ -23,10 +23,7 @@ namespace Core.Domains.Product.Queries.FindProductByName
             private readonly IMapper _mapper;
 
             public Handler(IApplicationDbContext context, IMapper mapper)
-            {
-                _mapper = mapper;
-                _context = context;
-            }
+                => (_context, _mapper) = (context, mapper);
 
             public async Task<FindProductByNameViewModel> Handle(FindProductByNameQuery request, CancellationToken cancellationToken)
             {

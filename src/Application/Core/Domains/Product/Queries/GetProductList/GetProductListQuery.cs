@@ -14,12 +14,9 @@ namespace Core.Domains.Product.Queries.GetProductList
         {
             private readonly IApplicationDbContext _context;
             private readonly IMapper _mapper;
-            public Handler(IApplicationDbContext context, IMapper mapper)
-            {
-                _context = context;
-                _mapper = mapper;
-            }
-
+            public Handler(IApplicationDbContext context, IMapper mapper) 
+                => (_context, _mapper) = (context, mapper);
+            
             public async Task<ProductListViewModel> Handle(GetProductListQuery request, CancellationToken cancellationToken)
             {
                 return new ProductListViewModel

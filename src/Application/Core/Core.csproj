@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Domains\OperationClaims\**" />
+    <Compile Remove="Domains\Orders\**" />
+    <EmbeddedResource Remove="Domains\OperationClaims\**" />
+    <EmbeddedResource Remove="Domains\Orders\**" />
+    <None Remove="Domains\OperationClaims\**" />
+    <None Remove="Domains\Orders\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="FluentValidation" Version="8.5.0" />
     <PackageReference Include="MediatR" Version="7.0.0" />
@@ -21,9 +30,6 @@
 
   <ItemGroup>
     <Folder Include="Domains\Customer\Commands\" />
-    <Folder Include="Domains\OperationClaims\Commands\" />
-    <Folder Include="Domains\OperationClaims\Queries\" />
-    <Folder Include="Domains\Orders\Commands\" />
   </ItemGroup>
 
 </Project>

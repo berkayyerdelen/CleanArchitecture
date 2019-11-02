@@ -13,14 +13,11 @@ namespace Core.Domains.Category.Commands.CreateCategory
 
         public class Handler : IRequestHandler<CreateCategoryCommand, Unit>
         {
-            private readonly IMediator _mediator;
+            
             private readonly IApplicationDbContext _context;
 
-            public Handler(IApplicationDbContext context, IMediator mediator)
-            {
-                _context = context;
-                _mediator = mediator;
-            }
+            public Handler(IApplicationDbContext context)
+                => _context = context;
 
             public async Task<Unit> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
             {
