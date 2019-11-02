@@ -10,12 +10,10 @@ namespace Persistence
         {
             
         }
-
         public ApplicationDbContext(DbContextOptions options) :base(options)
         {
             
         }
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerDetails> CustomerDetails { get; set; }

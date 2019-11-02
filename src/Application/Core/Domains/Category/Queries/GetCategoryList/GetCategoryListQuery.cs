@@ -14,11 +14,10 @@ namespace Core.Domains.Category.Queries.GetCategoryList
         {
             private readonly IApplicationDbContext _context;
             private readonly IMapper _mapper;
+
             public Handler(IApplicationDbContext context, IMapper mapper)
-            {
-                _mapper = mapper;
-                _context = context;
-            }
+                => (_context, _mapper) = (context, mapper);
+         
             public async Task<CategoryListViewModel> Handle(GetCategoryListQuery request, CancellationToken cancellationToken)
             {
                 return new CategoryListViewModel

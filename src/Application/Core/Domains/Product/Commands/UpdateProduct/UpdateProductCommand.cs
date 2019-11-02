@@ -21,10 +21,8 @@ namespace Core.Domains.Product.Commands.UpdateProduct
         public class Handler:IRequestHandler<UpdateProductCommand,Unit>
         {
             private readonly IApplicationDbContext _context;
-            public Handler(IApplicationDbContext context)
-            {
-                _context = context;
-            }
+            public Handler(IApplicationDbContext context) => _context = context;
+          
             public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Set<Entities.Product>().FindAsync(request.Id);

@@ -14,10 +14,8 @@ namespace Core.Domains.Product.Commands.DeleteProduct
         public class Handler : IRequestHandler<DeleteProductCommand, Unit>
         {
             private readonly IApplicationDbContext _context;
-            public Handler(IApplicationDbContext context)
-            {
-                _context = context;
-            }
+            public Handler(IApplicationDbContext context) => _context = context;
+            
             public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Set<Entities.Product>().FindAsync(request.Id);

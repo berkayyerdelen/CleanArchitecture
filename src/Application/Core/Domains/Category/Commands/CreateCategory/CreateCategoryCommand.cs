@@ -17,10 +17,8 @@ namespace Core.Domains.Category.Commands.CreateCategory
             private readonly IApplicationDbContext _context;
 
             public Handler(IApplicationDbContext context, IMediator mediator)
-            {
-                _context = context;
-                _mediator = mediator;
-            }
+                => (_mediator, _context) = (mediator, context);
+
             public async Task<Unit> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
             {
                 var entity = new Entities.Category
@@ -32,7 +30,6 @@ namespace Core.Domains.Category.Commands.CreateCategory
                 _context.Set<Entities.Category>().Add(entity);
                 await _context.SaveChangesAsync(cancellationToken);
                 return Unit.Value;
-                
             }
 
         }

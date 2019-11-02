@@ -15,10 +15,8 @@ namespace WabApi.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ProductController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+        public ProductController(IMediator mediator) => _mediator = mediator;
+
         [HttpPost]
         public async Task<Unit> CreateProduct(CreateProductCommand request, CancellationToken ct)
         {
@@ -36,6 +34,7 @@ namespace WabApi.Controllers
         {
             return await _mediator.Send(request, ct);
         }
+
         [HttpGet]
         [Route("findbyname/{name}")]
         public async Task<FindProductByNameViewModel> GetCategoryInfo(string name, CancellationToken ct)

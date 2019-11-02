@@ -19,9 +19,8 @@ namespace Core.Domains.Product.Commands.CreateProduct
         {
             public readonly IApplicationDbContext _context;
             public Handler(IApplicationDbContext context)
-            {
-                _context = context;
-            }
+                => _context = context;
+
             public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
             {
                 var entity = new Entities.Product()
@@ -36,7 +35,7 @@ namespace Core.Domains.Product.Commands.CreateProduct
                     UnitsOnOrder = request.UnitsOnOrder
 
                 };
-                await _context.Set<Entities.Product>().AddAsync(entity,cancellationToken);
+                await _context.Set<Entities.Product>().AddAsync(entity, cancellationToken);
                 await _context.SaveChangesAsync(cancellationToken);
                 return Unit.Value;
             }

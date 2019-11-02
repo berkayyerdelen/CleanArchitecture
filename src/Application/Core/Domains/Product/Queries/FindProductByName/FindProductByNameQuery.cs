@@ -12,20 +12,17 @@ namespace Core.Domains.Product.Queries.FindProductByName
     {
         public string ProductName { get; set; }
 
-        public FindProductByNameQuery(string productname)
-        {
-            ProductName = productname;
-        }
-
+        public FindProductByNameQuery(string productname) 
+            => ProductName = productname;
+        
         public class Handler:IRequestHandler<FindProductByNameQuery,FindProductByNameViewModel>
         {
             private readonly IApplicationDbContext _context;
             private readonly IMapper _mapper;
+
             public Handler(IApplicationDbContext context, IMapper mapper)
-            {
-                _mapper = mapper;
-                _context = context;
-            }
+                => (_mapper, _context) = (mapper, context);
+            
             public async Task<FindProductByNameViewModel> Handle(FindProductByNameQuery request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Set<Entities.Product>()
