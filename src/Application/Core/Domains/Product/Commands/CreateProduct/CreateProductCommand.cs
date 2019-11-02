@@ -23,6 +23,7 @@ namespace Core.Domains.Product.Commands.CreateProduct
 
             public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
             {
+                
                 var entity = new Entities.Product()
                 {
                     CategoryId = request.CategoryId,

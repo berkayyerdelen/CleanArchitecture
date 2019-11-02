@@ -27,7 +27,7 @@ namespace Core.Domains.Product.Commands.UpdateProduct
             public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Set<Entities.Product>().FindAsync(request.Id);
-                if (entity == null)
+                if (entity is null)
                 {
                     throw new NotFoundException(nameof(Entities.Product), "We couldnt product that u're looking for atm");
                 }
