@@ -16,7 +16,8 @@ namespace WabApi
                 // `LogEventLevel` requires `using Serilog.Events;`
                 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
-                .WriteTo.Console()
+                //.WriteTo.Console()
+                //.WriteTo.File(new CompactJsonFormatter(), "logs//log.json")
                 .WriteTo.Seq(
                     "http://localhost:5341")
                 .CreateLogger();

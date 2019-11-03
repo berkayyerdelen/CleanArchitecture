@@ -1,0 +1,5 @@
+{"@t":"2019-11-03T19:59:17.8780473Z","@mt":"Starting up"}
+{"@t":"2019-11-03T19:59:19.6713260Z","@mt":"Application started. Press Ctrl+C to shut down.","SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2019-11-03T19:59:19.6786127Z","@mt":"Hosting environment: {envName}","envName":"Development","SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2019-11-03T19:59:19.6795242Z","@mt":"Content root path: {contentRoot}","contentRoot":"D:\\repo\\CleanArchitecture\\src\\WabApi","SourceContext":"Microsoft.Hosting.Lifetime"}
+{"@t":"2019-11-03T19:59:24.9284614Z","@mt":"HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms","@r":["117.2186"],"RequestMethod":"POST","RequestPath":"/api/Category","StatusCode":400,"Elapsed":117.2186,"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"80000043-0002-fe00-b63f-84710c7967bb","SpanId":"|16dac875-4daeee93ec92d02a.","TraceId":"16dac875-4daeee93ec92d02a","ParentId":""}
