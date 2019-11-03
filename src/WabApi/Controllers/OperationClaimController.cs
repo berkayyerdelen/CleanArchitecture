@@ -22,17 +22,21 @@ namespace WabApi.Controllers
         public OperationClaimController(IMediator mediator)
             => _mediator = mediator;
 
+
         [HttpGet]
         public async Task<OperationClaimListViewModel> GetOperationClaimList(CancellationToken ct)
             => await _mediator.Send(new GetOperationClaimListQuery(), ct);
+
 
         [HttpPost]
         public async Task<Unit> CreateOperationClaim(CreateOperationClaimCommandHandler request, CancellationToken ct)
             => await _mediator.Send(request, ct);
 
+
         [HttpDelete]
         public async Task<Unit> DeleteOperationClaim(DeleteOperationClaimCommandHandler request, CancellationToken ct)
             => await _mediator.Send(request, ct);
+
 
         [HttpPut]
         public async Task<Unit> UpdateOperationClaim(UpdateOperationClaimCommandHandler request, CancellationToken ct)

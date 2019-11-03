@@ -16,28 +16,34 @@ namespace WabApi.Controllers
     {
         private readonly IMediator _mediator;
 
-        public CategoryController(IMediator mediator) => _mediator = mediator;
-       
+        public CategoryController(IMediator mediator)
+            => _mediator = mediator;
+
+
         [HttpPost]
         public async Task<Unit> CreateCategory(CreateCategoryCommand request, CancellationToken ct)
             => await _mediator.Send(request, ct);
 
+
         [HttpDelete]
         public async Task<Unit> DeleteCategory(DeleteCategoryCommand request, CancellationToken ct)
             => await _mediator.Send(request, ct);
-        
+
+
         [HttpPut]
         public async Task<Unit> UpdateCategory(UpdateCategoryCommand request, CancellationToken ct)
              => await _mediator.Send(request, ct);
-        
+
+
         [HttpGet]
         public async Task<CategoryListViewModel> GetCategoryList(CancellationToken ct)
             => await _mediator.Send(new GetCategoryListQuery(), ct);
-        
+
+
         [HttpGet]
         [Route("findbyname/{name}")]
         public async Task<FindCategoryByNameViewModel> GetCategoryInfo(string name, CancellationToken ct)
-            =>  await _mediator.Send(new FindCategoryByNameQuery(name), ct);
-       
+            => await _mediator.Send(new FindCategoryByNameQuery(name), ct);
+
     }
 }
