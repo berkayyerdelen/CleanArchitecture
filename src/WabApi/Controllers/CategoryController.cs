@@ -7,6 +7,7 @@ using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Category.Queries.GetCategoryList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WabApi.Controllers
 {
@@ -15,14 +16,17 @@ namespace WabApi.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly IMediator _mediator;
-
-        public CategoryController(IMediator mediator)
-            => _mediator = mediator;
+        private readonly ILogger<CategoryController> _logger;
+        public CategoryController(IMediator mediator,ILogger<CategoryController> logger)
+            => (_mediator,_logger) = (mediator,logger);
 
 
         [HttpPost]
         public async Task<Unit> CreateCategory(CreateCategoryCommand request, CancellationToken ct)
-            => await _mediator.Send(request, ct);
+        { 
+            _logger.LogInformation("CreateCategoy",request.CategoryName);
+            return await _mediator.Send(request, ct);
+        }
 
 
         [HttpDelete]
