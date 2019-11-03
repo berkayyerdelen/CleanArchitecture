@@ -39,4 +39,18 @@ Follow these steps to get your development environment set up:
 * Entity Framework Core 3
 
 
+## Functionalities
+-   Basic CRUD operations with CQRS+ MediatR  
+-   Authentication backed by JWT (not yet fully implemented)
+
+## TO-DO list
+-   Full API testing results will be provided once the application will have been completed
+-   Unit tests will be planned to do using FluentAssertions
+-	RabbitMQ as a message queue with Masstransit
+-	Logging with Serilog
+-	Caching with Redis
+-   Building service, database and UI using Docker from scratch
+
+
+
 
