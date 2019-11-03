@@ -28,6 +28,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{2D1234C7-0017-4D52-86FE-3F68244CB05F}"
 	ProjectSection(SolutionItems) = preProject
 		C:\Users\berka\OneDrive\Masaüstü\CleanArchitecture.pptx = C:\Users\berka\OneDrive\Masaüstü\CleanArchitecture.pptx
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
