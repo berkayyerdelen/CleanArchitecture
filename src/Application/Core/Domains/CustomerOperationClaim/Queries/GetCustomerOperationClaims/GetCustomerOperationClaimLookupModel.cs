@@ -12,7 +12,7 @@ namespace Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims
 
         public void CreateMappings(Profile configuration)
         {
-            configuration.CreateMap<OperationClaim, GetCustomerOperationClaimLookupModel>()
+            configuration.CreateMap<Entities.OperationClaim, GetCustomerOperationClaimLookupModel>()
                 .ForMember(x => x.Id, v => v.MapFrom(c => c.Id));
 
         }
