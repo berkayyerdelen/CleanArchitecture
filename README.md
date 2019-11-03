@@ -26,7 +26,7 @@ Follow these steps to get your development environment set up:
      dotnet build
      ```
 
-  4. Once the front end has started, within the `\Src\WebUI` directory, launch the back end by running:
+  4.  Launch the app  by running:
      ```
 	 dotnet run
 	 ```
