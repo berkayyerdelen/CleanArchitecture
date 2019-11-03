@@ -27,6 +27,7 @@ Follow these steps to get your development environment set up:
      ```
 
   4.  Launch the app  by running:
+
      ```
 	 dotnet run
 	 ```
