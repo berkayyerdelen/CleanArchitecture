@@ -35,6 +35,7 @@ Follow these steps to get your development environment set up:
 	 
   
   5. Launch [https://localhost:44336/api](http://localhost:44336/api) in your browser to view the API
+  6. Serilog http://localhost:5341
 
 ## Technologies
 * .NET Core 3
