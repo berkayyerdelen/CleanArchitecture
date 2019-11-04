@@ -57,7 +57,8 @@ namespace WabApi.Controllers
                 {
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
                 });
-               
+                return categorylist;
+
             }
             return cachedData;
         }
