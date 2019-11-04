@@ -45,7 +45,7 @@ Follow these steps to get your development environment set up:
 
 
 ## Functionalities
--   Basic CRUD operations with CQRS+ MediatR  
+-   Basic CRUD operations with CQRS + MediatR  
 -   Authentication backed by JWT (not yet fully implemented)
 -	Caching with Couchbase
 -	Logging with Serilog
