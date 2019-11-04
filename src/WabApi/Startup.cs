@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
 using Core.Comman.Infrastructure.AutoMapper;
@@ -11,6 +13,8 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Core.Interface;
+using Couchbase.Extensions.Caching;
+using Couchbase.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -42,6 +46,16 @@ namespace WabApi
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
             services.AddMvc().AddFluentValidation();
             services.AddControllers();
+            services.AddCouchbase(opt =>
+            {
+                opt.Servers= new List<Uri>()
+                {
+                    new Uri("http://localhost:8091")
+                };
+                opt.Username = "dualist1224";
+                opt.Password = "lejyoner+9";
+            });
+            services.AddDistributedCouchbaseCache("mycache",opt=>{});
             Validations(services);
 
             services.AddSwaggerGen(c =>
