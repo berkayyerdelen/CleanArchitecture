@@ -7,6 +7,7 @@ using Core.Domains.Category.Commands.DeleteCategory;
 using Core.Domains.Category.Commands.UpdateCategory;
 using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Category.Queries.GetCategoryList;
+using Couchbase;
 using Couchbase.Extensions.Caching;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -45,20 +46,20 @@ namespace WabApi.Controllers
 
 
         [HttpGet]
+        
         public async Task<CategoryListViewModel> GetCategoryList(CancellationToken ct)
         {
-            var message = _cache.GetString("CacheCategories");
-            if (message is null)
+            var cachedData = _cache.Get<CategoryListViewModel>("CacheCategories");
+            if (cachedData is null)
             {
                 var categorylist = await _mediator.Send(new GetCategoryListQuery(), ct);
                 _cache.Set("CacheCategories", categorylist,new DistributedCacheEntryOptions()
                 {
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
                 });
+               
             }
-
-           
-            return null;
+            return cachedData;
         }
 
 

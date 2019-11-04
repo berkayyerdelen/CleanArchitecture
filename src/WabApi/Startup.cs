@@ -54,6 +54,7 @@ namespace WabApi
                 };
                 opt.Username = "dualist1224";
                 opt.Password = "lejyoner+9";
+                opt.UseSsl = false;
             });
             services.AddDistributedCouchbaseCache("mycache",opt=>{});
             Validations(services);
