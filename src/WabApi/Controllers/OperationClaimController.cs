@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Core.Domains.OperationClaim.Command.CreateOperationClaim;
 using Core.Domains.OperationClaim.Command.DeleteOperationClaim;
 using Core.Domains.OperationClaim.Command.UpdateOperationClaim;
 using Core.Domains.OperationClaim.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WabApi.Controllers
