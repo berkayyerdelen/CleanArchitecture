@@ -23,16 +23,13 @@ namespace WabApi.Controllers
         private readonly IMediator _mediator;
         private readonly ILogger<CategoryController> _logger;
         private readonly IDistributedCache _cache;
-        public CategoryController(IMediator mediator,ILogger<CategoryController> logger, IDistributedCache cache)
-            => (_mediator,_logger,_cache) = (mediator,logger,cache);
+        public CategoryController(IMediator mediator, ILogger<CategoryController> logger, IDistributedCache cache)
+            => (_mediator, _logger, _cache) = (mediator, logger, cache);
 
 
         [HttpPost]
         public async Task<Unit> CreateCategory(CreateCategoryCommand request, CancellationToken ct)
-        { 
-            _logger.LogInformation("CreateCategoy",request.CategoryName);
-            return await _mediator.Send(request, ct);
-        }
+            => await _mediator.Send(request, ct);
 
 
         [HttpDelete]
@@ -46,22 +43,11 @@ namespace WabApi.Controllers
 
 
         [HttpGet]
-        
-        public async Task<CategoryListViewModel> GetCategoryList(CancellationToken ct)
-        {
-            var cachedData = _cache.Get<CategoryListViewModel>("CacheCategories");
-            if (cachedData is null)
-            {
-                var categorylist = await _mediator.Send(new GetCategoryListQuery(), ct);
-                _cache.Set("CacheCategories", categorylist,new DistributedCacheEntryOptions()
-                {
-                    AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
-                });
-                return categorylist;
 
-            }
-            return cachedData;
-        }
+        public async Task<CategoryListViewModel> GetCategoryList(CancellationToken ct)
+            => await _mediator.Send(new GetCategoryListQuery(), ct);
+
+
 
 
         [HttpGet]
