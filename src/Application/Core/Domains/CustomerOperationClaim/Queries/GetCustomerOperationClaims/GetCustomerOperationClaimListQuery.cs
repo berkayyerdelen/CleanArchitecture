@@ -12,7 +12,7 @@ namespace Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims
 {
     public class GetCustomerOperationClaimListQuery : IRequest<CustomerOperationClaimViewModel>
     {
-        public Customer Customer { get; set; }
+        public Entities.Customer Customer { get; set; }
         public class Handler : IRequestHandler<GetCustomerOperationClaimListQuery, CustomerOperationClaimViewModel>
         {
             private readonly IApplicationDbContext _context;

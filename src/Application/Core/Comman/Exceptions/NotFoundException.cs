@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Exceptions
+namespace Core.Comman.Exceptions
 {
     public class NotFoundException:Exception
     {

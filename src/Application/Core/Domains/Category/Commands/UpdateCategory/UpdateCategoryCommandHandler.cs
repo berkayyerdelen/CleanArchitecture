@@ -9,8 +9,7 @@ namespace Core.Domains.Category.Commands.UpdateCategory
 {
     public class UpdateCategoryCommandHandler:IRequest<UpdateCategoryCommand>
     {
-       
-       
+        
         public class Handler:IRequestHandler<UpdateCategoryCommand,Unit>
         {
             private readonly IApplicationDbContext _context;

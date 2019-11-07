@@ -30,7 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domains\Customer\Commands\" />
+    <Folder Include="Domains\Customer\Queries\CheckCustomerExist\" />
+    <Folder Include="Domains\Security\" />
   </ItemGroup>
 
 </Project>
