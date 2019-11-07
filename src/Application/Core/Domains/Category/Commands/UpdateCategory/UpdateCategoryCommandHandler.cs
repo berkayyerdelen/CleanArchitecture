@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Core.Exceptions;
+using Core.Comman.Exceptions;
 using Core.Interface;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

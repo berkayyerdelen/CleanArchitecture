@@ -20,7 +20,7 @@ namespace Core.Domains.Customer.Queries.LoginCheckCustomer
 
             public async Task<bool> Handle(CustomerLoginCheckUpLookModel request, CancellationToken cancellationToken)
             {
-                var customer = _context.Set<Entities.Customer>().SingleOrDefaultAsync(x => x.Email == request.Email,cancellationToken).Result;
+                var customer = Task.FromResult(await _context.Set<Entities.Customer>().SingleOrDefaultAsync(x => x.Email == request.Email,cancellationToken)).Result;
                 if (customer is null)
                 {
                     throw new NotFoundException(nameof(Entities.Customer),request.Password);

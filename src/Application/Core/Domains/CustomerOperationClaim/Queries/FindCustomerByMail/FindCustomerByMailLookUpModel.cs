@@ -14,7 +14,7 @@ namespace Core.Domains.CustomerOperationClaim.Queries.FindCustomerByMail
         public byte[] PasswordHash { get; set; }
 
         public void CreateMappings(Profile configuration) =>
-            configuration.CreateMap<Customer, FindCustomerByMailLookUpModel>()
+            configuration.CreateMap<Entities.Customer, FindCustomerByMailLookUpModel>()
                 .ForMember(x => x.Id, v => v.MapFrom(c => c.Id))
                 .ForMember(x => x.Email, v => v.MapFrom(c => c.Email))
                 .ForMember(x => x.FullName, v => v.MapFrom(c => c.FullName));

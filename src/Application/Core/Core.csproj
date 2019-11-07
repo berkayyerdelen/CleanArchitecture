@@ -29,9 +29,4 @@
     <ProjectReference Include="..\..\Domain\Entities\Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Domains\Customer\Queries\CheckCustomerExist\" />
-    <Folder Include="Domains\Security\" />
-  </ItemGroup>
-
 </Project>

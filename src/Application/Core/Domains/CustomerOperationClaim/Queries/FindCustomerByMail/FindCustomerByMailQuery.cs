@@ -27,7 +27,7 @@ namespace Core.Domains.CustomerOperationClaim.Queries.FindCustomerByMail
             
             public async Task<FindCustomerByMailViewModel> Handle(FindCustomerByMailQuery request, CancellationToken cancellationToken)
             {
-                var entity = await _context.Set<Customer>().ProjectTo<FindCustomerByMailLookUpModel>(_mapper.ConfigurationProvider)
+                var entity = await _context.Set<Entities.Customer>().ProjectTo<FindCustomerByMailLookUpModel>(_mapper.ConfigurationProvider)
                     .SingleOrDefaultAsync(x => x.Email == request.Email, cancellationToken);
                 return new FindCustomerByMailViewModel()
                 {
