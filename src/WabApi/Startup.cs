@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
 using Core.Comman.Infrastructure.AutoMapper;
+using Core.Comman.Security.Jwt;
 using Core.Domains.Category.Commands.CreateCategory;
 using Core.Domains.Category.Commands.DeleteCategory;
 using Core.Domains.Category.Commands.UpdateCategory;
@@ -45,6 +46,7 @@ namespace WabApi
             services.AddScoped<IApplicationDbContext>(s => s.GetService<ApplicationDbContext>());
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
             services.AddMvc().AddFluentValidation();
+            services.AddScoped<ITokenHelper, JwtHelper>();
             services.AddControllers();
             services.AddCouchbase(opt =>
             {
