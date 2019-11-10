@@ -48,17 +48,19 @@ namespace WabApi
             services.AddMvc().AddFluentValidation();
             services.AddScoped<ITokenHelper, JwtHelper>();
             services.AddControllers();
+            
             services.AddCouchbase(opt =>
             {
                 opt.Servers= new List<Uri>()
                 {
                     new Uri("http://localhost:8091")
                 };
-                opt.Username = "dualist1224";
-                opt.Password = "lejyoner+9";
+                opt.Username = Configuration.GetValue<string>("Couchbase:ClusterId");
+                opt.Password = Configuration.GetValue<string>("Couchbase:ClusterPassword");
                 opt.UseSsl = false;
             });
-            services.AddDistributedCouchbaseCache("mycache",opt=>{});
+            services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"),opt => { });
+
             Validations(services);
 
             services.AddSwaggerGen(c =>
