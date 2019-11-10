@@ -30,7 +30,9 @@ namespace Core.Domains.Customer.Queries.CreateAccessToken
                         equals customerOperationClaim.OperationClaimId
                     where customerOperationClaim.CustomerId == request.CustomerId
                     select new Entities.OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name }).ToList();
+              
                 var customer = await _context.Set<Entities.Customer>().SingleOrDefaultAsync(x => x.Id == request.CustomerId, cancellationToken);
+
                 var accestoken = _tokenHelper.CreateToken(customer, claims);
                 return new CreateAccessTokenViewModel()
                 {
