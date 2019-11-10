@@ -95,8 +95,8 @@ namespace WabApi
                     Description = "Clean Architecture",
                     Contact = new OpenApiContact()
                     {
-                        Name = "Berkay Yerdelen"
-                        
+                        Name = "Berkay Yerdelen",
+                        Email = "berkayyerdelen@gmail.com"
                     }
                 });
                 var securitySchema = new OpenApiSecurityScheme
