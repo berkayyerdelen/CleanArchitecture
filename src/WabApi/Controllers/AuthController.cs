@@ -20,10 +20,10 @@ namespace WabApi.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IApplicationDbContext _context;
-      
-
+        
         public AuthController(IMediator mediator, IApplicationDbContext context)
             => (_mediator, _context) = (mediator, context);
+
         [HttpPost("Login")]
         [AllowAnonymous]
         public  Task<CreateAccessTokenViewModel> Login(CustomerLoginCheckQuery request,CancellationToken ct)
