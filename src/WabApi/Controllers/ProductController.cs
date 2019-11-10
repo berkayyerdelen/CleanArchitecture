@@ -6,6 +6,7 @@ using Core.Domains.Product.Commands.UpdateProduct;
 using Core.Domains.Product.Queries.FindProductByName;
 using Core.Domains.Product.Queries.GetProductList;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WabApi.Controllers
@@ -39,6 +40,7 @@ namespace WabApi.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ProductListViewModel> GetProductList(CancellationToken ct)
             => await _mediator.Send(new GetProductListQuery(), ct);
 

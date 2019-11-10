@@ -23,15 +23,11 @@ namespace WabApi.Controllers
         //    => _mediator = mediator;
 
         public AuthController(IMediator mediator, IApplicationDbContext context)
-        {
-            _mediator = mediator;
-            _context = context;
-        }
+            => (_mediator, _context) = (mediator, context);
         [HttpPost("Login")]
         public  Task<CreateAccessTokenViewModel> Login(CustomerLoginCheckQuery request,CancellationToken ct)
         {
             var userToLogin = _mediator.Send(request, ct).Result;
-            //var a =_context.Set<Customer>().SingleOrDefault(x => x.Email == "berkayyerdelen@gmail.com",ct);
             var result = _mediator.Send(new CreateAccessTokenQuery(userToLogin.Id));
             return result;
         }

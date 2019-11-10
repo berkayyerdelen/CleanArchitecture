@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
 using Core.Comman.Infrastructure.AutoMapper;
+using Core.Comman.Security.Encryption;
 using Core.Comman.Security.Jwt;
 using Core.Domains.Category.Commands.CreateCategory;
 using Core.Domains.Category.Commands.DeleteCategory;
@@ -24,7 +25,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Persistence;
 using Serilog;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace WabApi
 {
@@ -48,7 +50,28 @@ namespace WabApi
             services.AddMvc().AddFluentValidation();
             services.AddScoped<ITokenHelper, JwtHelper>();
             services.AddControllers();
-            
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",builder=>builder.WithOrigins("http://localhost:3000"));
+            });
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+                options =>
+                {
+                    options.TokenValidationParameters= new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = tokenOptions.Issuer,
+                        ValidAudience = tokenOptions.Audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                    };
+                });
+
+
             services.AddCouchbase(opt =>
             {
                 opt.Servers= new List<Uri>()
@@ -66,6 +89,7 @@ namespace WabApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+               
             });
         }
 
@@ -86,11 +110,15 @@ namespace WabApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builders => builders.WithOrigins("http://localhost:3000").AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseSerilogRequestLogging();
+           
             app.UseRouting();
-
+            
+            app.UseAuthentication();
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
