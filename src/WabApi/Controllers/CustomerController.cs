@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Core.Domains.Customer.Commands.CreateCustomer;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WabApi.Controllers
@@ -18,6 +19,7 @@ namespace WabApi.Controllers
         }
 
         [HttpPost("CreateCustomer")]
+        [Authorize(Roles = "Admin")]
         public async Task<Unit> CreateCustomer(CreateCustomerCommand request, CancellationToken ct)
             => await _mediator.Send(request, ct);
 
