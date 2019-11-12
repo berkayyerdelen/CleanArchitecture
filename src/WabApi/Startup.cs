@@ -30,6 +30,7 @@ using Persistence;
 using Serilog;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using WabApi.Extensions;
 
 namespace WabApi
 {
@@ -45,8 +46,10 @@ namespace WabApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(CreateCategoryCommand));
-            services.AddMediatR(typeof(UpdateCategoryCommand));
+            //services.AddMediatR(typeof(CreateCategoryCommand));
+            //services.AddMediatR(typeof(UpdateCategoryCommand));
+            services.AssignMediatr();
+            services.Validations();
             services.AddConfiguredDbContext(Configuration);
             services.AddScoped<IApplicationDbContext>(s => s.GetService<ApplicationDbContext>());
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
@@ -87,7 +90,7 @@ namespace WabApi
             });
             services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"),opt => { });
 
-            Validations(services);
+            
 
             services.AddSwaggerGen(c =>
             {
@@ -155,18 +158,18 @@ namespace WabApi
                 endpoints.MapControllers();
             });
         }
-        public IServiceCollection Validations(IServiceCollection service)
-        {
-            service.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
-            service.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
-            service.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
-            service.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
-            service.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
-            service.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
-            service.AddSingleton<IValidator<CreateOperationClaimCommandHandler>,CreateOperationClaimCommandHandlerValidator>();
-            service.AddSingleton<IValidator<DeleteOperationClaimCommandHandler>,DeleteOperationClaimCommandHandlerValidator>();
-            service.AddSingleton<IValidator<UpdateOperationClaimCommandHandler>,UpdateOperationClaimHandlerValidator>();
-            return service;
-        }
+        //public IServiceCollection Validations(IServiceCollection service)
+        //{
+        //    service.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
+        //    service.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
+        //    service.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
+        //    service.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
+        //    service.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
+        //    service.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
+        //    service.AddSingleton<IValidator<CreateOperationClaimCommandHandler>,CreateOperationClaimCommandHandlerValidator>();
+        //    service.AddSingleton<IValidator<DeleteOperationClaimCommandHandler>,DeleteOperationClaimCommandHandlerValidator>();
+        //    service.AddSingleton<IValidator<UpdateOperationClaimCommandHandler>,UpdateOperationClaimHandlerValidator>();
+        //    return service;
+        //}
     }
 }
