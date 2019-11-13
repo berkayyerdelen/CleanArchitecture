@@ -46,8 +46,7 @@ namespace WabApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMediatR(typeof(CreateCategoryCommand));
-            //services.AddMediatR(typeof(UpdateCategoryCommand));
+          
             services.AssignMediatr();
             services.Validations();
             services.AddConfiguredDbContext(Configuration);
@@ -77,7 +76,6 @@ namespace WabApi
                     };
                 });
 
-
             services.AddCouchbase(opt =>
             {
                 opt.Servers= new List<Uri>()
@@ -89,41 +87,9 @@ namespace WabApi
                 opt.UseSsl = false;
             });
             services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"),opt => { });
-
+            services.AddSwagger();
             
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "API",
-                    Description = "Clean Architecture",
-                    Contact = new OpenApiContact()
-                    {
-                        Name = "Berkay Yerdelen",
-                        Email = "berkayyerdelen@gmail.com"
-                    }
-                });
-                var securitySchema = new OpenApiSecurityScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "bearer",
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
-                };
-                c.AddSecurityDefinition("Bearer", securitySchema);
-
-                var securityRequirement = new OpenApiSecurityRequirement();
-                securityRequirement.Add(securitySchema, new[] { "Bearer" });
-                c.AddSecurityRequirement(securityRequirement);
-            });
+            
         }
 
       
@@ -158,18 +124,6 @@ namespace WabApi
                 endpoints.MapControllers();
             });
         }
-        //public IServiceCollection Validations(IServiceCollection service)
-        //{
-        //    service.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
-        //    service.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
-        //    service.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
-        //    service.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
-        //    service.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
-        //    service.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
-        //    service.AddSingleton<IValidator<CreateOperationClaimCommandHandler>,CreateOperationClaimCommandHandlerValidator>();
-        //    service.AddSingleton<IValidator<DeleteOperationClaimCommandHandler>,DeleteOperationClaimCommandHandlerValidator>();
-        //    service.AddSingleton<IValidator<UpdateOperationClaimCommandHandler>,UpdateOperationClaimHandlerValidator>();
-        //    return service;
-        //}
+      
     }
 }
