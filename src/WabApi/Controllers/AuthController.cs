@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Core.Domains.Customer.Queries.CreateAccessToken;
 using Core.Domains.Customer.Queries.LoginCheckCustomer;
 using Core.Interface;
-using Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WabApi.Controllers
