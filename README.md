@@ -39,7 +39,7 @@ Follow these steps to get your development environment set up:
   5. Launch [https://localhost:44336/api](http://localhost:44336/api) in your browser to view the API
   6. Serilog http://localhost:5341
   7. CouchBase http://127.0.0.1:8091/ui/
-  8. MongoDb localhost:27017/serilogs/logs
+  8. MongoDb http://localhost:27017/serilogs/logs
 
 
 ## Technologies
