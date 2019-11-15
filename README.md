@@ -14,7 +14,7 @@ You will need the following tools:
 * [.NET Core SDK 3](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 * [Couchbase Server 6.0.0 Community](https://www.couchbase.com/downloads)
 * [Seq 5.1](https://datalust.co/download)
-* [MongoDB 4.2.1] (https://www.mongodb.com/download-center/community)
+* [MongoDB 4.2.1](https://www.mongodb.com/download-center/community)
 ### Setup
 Follow these steps to get your development environment set up:
 
