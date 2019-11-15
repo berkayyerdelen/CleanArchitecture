@@ -19,7 +19,7 @@ namespace WabApi.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<CategoryController> _logger;
-        public CategoryController(IMediator mediator, ILogger<CategoryController> logger, IDistributedCache cache)
+        public CategoryController(IMediator mediator, ILogger<CategoryController> logger)
             => (_mediator, _logger) = (mediator, logger);
 
         [HttpPost]
