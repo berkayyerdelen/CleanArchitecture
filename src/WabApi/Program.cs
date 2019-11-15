@@ -13,13 +13,14 @@ namespace WabApi
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                // `LogEventLevel` requires `using Serilog.Events;`
-                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+               // `LogEventLevel` requires `using Serilog.Events;`
+                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Error)
                 .Enrich.FromLogContext()
                 //.WriteTo.Console()
                 //.WriteTo.File(new CompactJsonFormatter(), "logs//log.json")
                 .WriteTo.Seq(
-                    "http://localhost:5341")
+                    Environment.GetEnvironmentVariable("SEQ_URL") ?? "http://localhost:5341")
+                .WriteTo.MongoDB("mongodb://localhost:27017/serilogs", collectionName: "logs")
                 .CreateLogger();
             try
             {
@@ -34,7 +35,7 @@ namespace WabApi
             {
                 Log.CloseAndFlush();
             }
-            
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

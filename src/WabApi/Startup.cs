@@ -62,6 +62,9 @@ namespace WabApi
             services.AddScoped<ITokenHelper, JwtHelper>();
             services.AddControllers();
 
+
+           
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin",builder=>builder.WithOrigins("http://localhost:3000"));
