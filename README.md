@@ -38,6 +38,8 @@ Follow these steps to get your development environment set up:
   5. Launch [https://localhost:44336/api](http://localhost:44336/api) in your browser to view the API
   6. Serilog http://localhost:5341
   7. CouchBase http://127.0.0.1:8091/ui/
+  8. MongoDb localhost:27017/serilogs/logs
+
 
 ## Technologies
 * .NET Core 3
@@ -50,6 +52,7 @@ Follow these steps to get your development environment set up:
 -   Authentication backed by JWT 
 -	Caching with Couchbase
 -	Logging with Serilog
+-	Inserting AuditLogs to MongoDB
 
 ## TO-DO list
 -   Full API testing results will be provided once the application will have been completed
