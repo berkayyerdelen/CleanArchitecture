@@ -5,10 +5,20 @@ using AutoMapper;
 using Core.Comman.Infrastructure.AutoMapper;
 using Core.Comman.Security.Encryption;
 using Core.Comman.Security.Jwt;
+using Core.Domains.Category.Commands.CreateCategory;
+using Core.Domains.Category.Commands.DeleteCategory;
+using Core.Domains.Category.Commands.UpdateCategory;
+using Core.Domains.OperationClaim.Command.CreateOperationClaim;
+using Core.Domains.OperationClaim.Command.DeleteOperationClaim;
+using Core.Domains.OperationClaim.Command.UpdateOperationClaim;
+using Core.Domains.Product.Commands.CreateProduct;
+using Core.Domains.Product.Commands.DeleteProduct;
+using Core.Domains.Product.Commands.UpdateProduct;
 using FluentValidation.AspNetCore;
 using Core.Interface;
 using Couchbase.Extensions.Caching;
 using Couchbase.Extensions.DependencyInjection;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -36,7 +46,15 @@ namespace WabApi
         {
           
             services.AssignMediatr();
-            services.Validations();
+            services.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
+            services.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
+            services.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
+            services.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
+            services.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
+            services.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
+            services.AddSingleton<IValidator<CreateOperationClaimCommandHandler>, CreateOperationClaimCommandHandlerValidator>();
+            services.AddSingleton<IValidator<DeleteOperationClaimCommandHandler>, DeleteOperationClaimCommandHandlerValidator>();
+            services.AddSingleton<IValidator<UpdateOperationClaimCommandHandler>, UpdateOperationClaimHandlerValidator>();
             services.AddConfiguredDbContext(Configuration);
             services.AddScoped<IApplicationDbContext>(s => s.GetService<ApplicationDbContext>());
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
