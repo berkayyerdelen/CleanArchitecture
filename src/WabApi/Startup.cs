@@ -46,15 +46,7 @@ namespace WabApi
         {
           
             services.AssignMediatr();
-            services.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
-            services.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
-            services.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
-            services.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
-            services.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
-            services.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
-            services.AddSingleton<IValidator<CreateOperationClaimCommandHandler>, CreateOperationClaimCommandHandlerValidator>();
-            services.AddSingleton<IValidator<DeleteOperationClaimCommandHandler>, DeleteOperationClaimCommandHandlerValidator>();
-            services.AddSingleton<IValidator<UpdateOperationClaimCommandHandler>, UpdateOperationClaimHandlerValidator>();
+            services.ConfigureValidations();
             services.AddConfiguredDbContext(Configuration);
             services.AddScoped<IApplicationDbContext>(s => s.GetService<ApplicationDbContext>());
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });

@@ -61,7 +61,7 @@ namespace WabApi.Extensions
 
         }
 
-        public static void Validations(this IServiceCollection service)
+        public static void ConfigureValidations(this IServiceCollection service)
         {
             service.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
             service.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
