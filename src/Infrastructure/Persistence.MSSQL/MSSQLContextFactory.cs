@@ -18,7 +18,7 @@ namespace Persistence.MSSQL
                 config.GetConnectionString(nameof(ApplicationDbContext)),
                 b => b.MigrationsAssembly("Persistence.MSSQL")
             );
-            return new MSSQLApplicationDbContext(builder.Options);
+            return new MssqlApplicationDbContext(builder.Options);
         }
     }
 }
