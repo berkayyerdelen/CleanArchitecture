@@ -2,9 +2,9 @@
 
 namespace Persistence.MSSQL
 {
-    public class MSSQLApplicationDbContext :ApplicationDbContext
+    public class MssqlApplicationDbContext :ApplicationDbContext
     {
-        public MSSQLApplicationDbContext(DbContextOptions options) :base(options)
+        public MssqlApplicationDbContext(DbContextOptions options) :base(options)
         {
             
         }

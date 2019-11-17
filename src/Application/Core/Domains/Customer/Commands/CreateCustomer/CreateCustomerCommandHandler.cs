@@ -29,7 +29,7 @@ namespace Core.Domains.Customer.Commands.CreateCustomer
                     PasswordSalt = passwordSalt
                 };
                 await _context.Set<Entities.Customer>().AddAsync(customer, cancellationToken);
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
             }
         }

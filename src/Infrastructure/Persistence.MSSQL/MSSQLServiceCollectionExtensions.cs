@@ -4,13 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Persistence.MSSQL
 {
-    public static class MSSQLServiceCollectionExtensions
+    public static class MssqlServiceCollectionExtensions
     {
         public static IServiceCollection AddMssqlDbContext(
             this IServiceCollection serviceCollection,
             IConfiguration config = null)
         {
-            serviceCollection.AddDbContext<ApplicationDbContext, MSSQLApplicationDbContext>(options =>
+            serviceCollection.AddDbContext<ApplicationDbContext, MssqlApplicationDbContext>(options =>
             {
                 options.UseSqlServer(config.GetConnectionString("ApplicationDbContext"), b => b.MigrationsAssembly("Persistence.MSSQL"));
             });
