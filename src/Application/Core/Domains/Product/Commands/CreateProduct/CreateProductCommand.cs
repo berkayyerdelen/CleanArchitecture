@@ -37,7 +37,7 @@ namespace Core.Domains.Product.Commands.CreateProduct
 
                 };
                 await _context.Set<Entities.Product>().AddAsync(entity, cancellationToken);
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
             }
         }

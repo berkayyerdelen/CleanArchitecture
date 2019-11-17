@@ -20,7 +20,7 @@ namespace Core.Domains.OperationClaim.Command.UpdateOperationClaim
                 var entity = _context.Set<Entities.OperationClaim>()
                     .FindAsync(request.OperationCliamId).Result;
                 entity.Name = request.OperationClaimName;
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
             }
         }

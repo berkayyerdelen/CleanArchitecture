@@ -40,7 +40,7 @@ namespace Core.Domains.Product.Commands.UpdateProduct
                 entity.ReorderLevel = request.ReOrderLevel == 0 ? entity.ReorderLevel : request.ReOrderLevel;
                 entity.UnitsInStock = request.UnitsInStock == 0 ? entity.UnitsInStock : request.UnitsInStock;
                 entity.UnitsOnOrder = request.UnitsOnOrder == 0 ? entity.UnitsOnOrder : request.UnitsOnOrder;
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync(true,cancellationToken);
                 return Unit.Value;
                 
             }

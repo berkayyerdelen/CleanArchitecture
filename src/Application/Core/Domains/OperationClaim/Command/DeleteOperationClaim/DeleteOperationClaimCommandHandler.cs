@@ -25,7 +25,7 @@ namespace Core.Domains.OperationClaim.Command.DeleteOperationClaim
                 if(entity is null)
                     throw new NotFoundException(nameof(Entities.OperationClaim), request.OperationClaimName);
                 _context.Set<Entities.OperationClaim>().Remove(entity);
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync(true, cancellationToken);
 
                 return Unit.Value;
             }

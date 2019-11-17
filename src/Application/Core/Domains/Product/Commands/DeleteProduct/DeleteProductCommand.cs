@@ -27,7 +27,7 @@ namespace Core.Domains.Product.Commands.DeleteProduct
                 }
 
                 _context.Set<Entities.Product>().Remove(entity);
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
 
             }

@@ -28,7 +28,7 @@ namespace Core.Domains.Category.Commands.CreateCategory
                     Picture = request.Picture
                 };
                 _context.Set<Entities.Category>().Add(entity);
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
             }
 

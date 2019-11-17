@@ -21,7 +21,7 @@ namespace Core.Domains.OperationClaim.Command.CreateOperationClaim
                 {
                     Name = request.OperationClaimName
                 });
-                await _context.SaveChangesAsync(cancellationToken);
+                 await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
 
             }

@@ -27,7 +27,7 @@ namespace Core.Domains.Category.Commands.UpdateCategory
                 entity.CategoryName = request.CategoryName ?? entity.CategoryName;
                 entity.Description = request.Description ?? entity.Description;
                 entity.Picture = request.Pictures ?? entity.Picture;
-                await _context.SaveChangesAsync(cancellationToken);
+                await _context.SaveChangesAsync(true,cancellationToken);
                 return Unit.Value;
             }
         }
