@@ -67,12 +67,15 @@ namespace Core.Comman.Security.Jwt
 
         private void AddJwtToCookie(string jwt,string customerId)
         {
+
             CookieOptions option = new CookieOptions()
             {
                 Expires = DateTime.Now.AddMinutes(30)
             };
+            
            _httpContextAccessor.HttpContext.Response.Cookies.Append("JWT",jwt, option);
-           _httpContextAccessor.HttpContext.Response.Cookies.Append("UserID", customerId, option);
+           
+
         }
     }
 }
