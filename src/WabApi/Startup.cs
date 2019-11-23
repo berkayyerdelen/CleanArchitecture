@@ -122,8 +122,8 @@ namespace WabApi
             
             app.UseAuthentication();
             app.UseAuthorization();
-            
 
+            app.UseSecurityHeaders();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
