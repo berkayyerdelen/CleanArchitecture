@@ -27,23 +27,20 @@ namespace Core.Domains.Customer.Commands.CreateOrderwithDetails
                 var order = new Order()
                 {
                     CustomerId = _appUserIdSession.JwtUserIdParse(),
-                    //Freight = request.Freight,
-                    //OrderDate = request.OrderDate,
-                    //RequiredDate = request.RequiredDate,
-                    //ShipAddress = request.ShipAddress,
-                    //ShipCity = request.ShipCity,
-                    //ShipCountry = request.ShipCountry,
-                    //ShipName = request.ShipName,
-                    //ShipPostalCode = request.ShipPostalCode,
-                    //ShipRegion = request.ShipRegion,
-                    //ShipVia = request.ShipVia,
-                    //ShippedDate = request.ShippedDate
+                    Freight = request.Freight,
+                    OrderDate = request.OrderDate,
+                    RequiredDate = request.RequiredDate,
+                    ShipAddress = request.ShipAddress,
+                    ShipCity = request.ShipCity,
+                    ShipCountry = request.ShipCountry,
+                    ShipName = request.ShipName,
+                    ShipPostalCode = request.ShipPostalCode,
+                    ShipRegion = request.ShipRegion,
+                    ShipVia = request.ShipVia,
+                    ShippedDate = request.ShippedDate
 
                 };
 
-                _mapper.Map(request, order);
-                var g = order.CustomerId;
-                order.CustomerId = _appUserIdSession.JwtUserIdParse();
                 await _context.Set<Order>().AddAsync(order, cancellationToken);
                 await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
