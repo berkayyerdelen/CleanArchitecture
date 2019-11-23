@@ -39,9 +39,5 @@ namespace Core.Domains.Customer.Commands.CreateOrderwithDetails
         public short Quantity { get; set; }
         public float Discount { get; set; }
 
-
-
     }
-
-
 }

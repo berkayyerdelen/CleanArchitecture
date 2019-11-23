@@ -33,9 +33,7 @@ namespace Core.Comman.Security.Jwt
             var jwt = CreateJwtSecurityToken(_tokenOptions, customer, signingCredentials, operationClaims);
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var token = jwtSecurityTokenHandler.WriteToken(jwt);
-
-
-            AddJwtToCookie(jwt.EncodedPayload,customer.Id.ToString());
+            AddJwtToCookie(token,customer.Id.ToString());
             return new AccessToken()
             {
                 Token = token,
@@ -76,9 +74,7 @@ namespace Core.Comman.Security.Jwt
             };
             
            _httpContextAccessor.HttpContext.Response.Cookies.Append("JWT",jwt, option);
-           ISession a;
            
-
         }
     }
 }

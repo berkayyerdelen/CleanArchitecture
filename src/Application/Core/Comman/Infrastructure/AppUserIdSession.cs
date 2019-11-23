@@ -22,8 +22,7 @@ namespace Core.Comman.Infrastructure
             try
             {
                 JwtSecurityTokenHandler _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-                var jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." + _httpContextAccessor.HttpContext.Request.Cookies["jwt"]
-                                                                  + ".ya1vxEUVjipUmQ6CLTl1UmXKPwrm2sz17YJ6FPYTEcc";
+                var jwt = _httpContextAccessor.HttpContext.Request.Cookies["jwt"];
                 var readableToken = _jwtSecurityTokenHandler.CanReadToken(jwt);
                 var parSecurityToken = _jwtSecurityTokenHandler.ReadToken(jwt) as JwtSecurityToken;
                 return Convert.ToInt32(parSecurityToken?.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
