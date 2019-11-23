@@ -33,6 +33,8 @@ namespace Core.Comman.Security.Jwt
             var jwt = CreateJwtSecurityToken(_tokenOptions, customer, signingCredentials, operationClaims);
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var token = jwtSecurityTokenHandler.WriteToken(jwt);
+           
+            
             AddJwtToCookie(jwt.EncodedPayload,customer.Id.ToString());
             return new AccessToken()
             {

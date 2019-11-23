@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Comman.Infrastructure;
+using Core.Comman.Security.Jwt;
 using Core.Domains.Category.Commands.CreateCategory;
 using Core.Domains.Category.Commands.DeleteCategory;
 using Core.Domains.Category.Commands.UpdateCategory;
@@ -58,7 +60,7 @@ namespace WabApi.Extensions
             service.AddMediatR(typeof(FindProductByNameQuery));
             service.AddMediatR(typeof(GetProductListQuery));
 
-
+        
         }
 
         public static void ConfigureValidations(this IServiceCollection service)

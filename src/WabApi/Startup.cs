@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
+using Core.Comman.Infrastructure;
 using Core.Comman.Infrastructure.AutoMapper;
+using Core.Comman.Interface.AppUserSession;
 using Core.Comman.Security.Encryption;
 using Core.Comman.Security.Jwt;
 using Core.Domains.Category.Commands.CreateCategory;
@@ -44,18 +46,20 @@ namespace WabApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-          
+            
             services.AssignMediatr();
             services.ConfigureValidations();
             services.AddConfiguredDbContext(Configuration);
             services.AddScoped<IApplicationDbContext>(s => s.GetService<ApplicationDbContext>());
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
             services.AddMvc().AddFluentValidation();
+            services.AddScoped<IAppUserIdSession, AppUserIdSession>();
             services.AddScoped<ITokenHelper, JwtHelper>();
-            services.AddControllers();
-
-
            
+            services.AddControllers().AddControllersAsServices();
+           
+
+
 
             services.AddCors(options =>
             {
@@ -89,8 +93,8 @@ namespace WabApi
             });
             services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"),opt => { });
             services.AddSwagger();
-            
-            
+          
+
         }
 
       
