@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Comman.HangFire;
 using Core.Comman.Infrastructure;
 using Core.Comman.Security.Jwt;
 using Core.Domains.Category.Commands.CreateCategory;
@@ -25,6 +26,7 @@ using Core.Domains.Product.Queries.GetProductList;
 using Couchbase.Extensions.DependencyInjection;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
@@ -90,6 +92,8 @@ namespace WabApi.Extensions
             //service.AddSingleton<IValidator<UpdateOperationClaimCommandHandler>, UpdateOperationClaimHandlerValidator>();
             //return service;
         }
+
+      
         public static void AddSwagger(this IServiceCollection service)
         {
             service.AddSwaggerGen(c =>

@@ -23,22 +23,31 @@ namespace Core.Domains.Category.Queries.GetCategoryList
 
             public async Task<CategoryListViewModel> Handle(GetCategoryListQuery request, CancellationToken cancellationToken)
             {
-                var cachedData = _cache.Get<CategoryListViewModel>("CacheCategories");
-                if (cachedData is null)
+                try
                 {
-                    var categoryList= new CategoryListViewModel
+                    var cachedData = _cache.Get<CategoryListViewModel>("CacheCategories");
+                    if (cachedData is null)
                     {
-                        Categories = await _context.Set<Entities.Category>()
-                            .ProjectTo<CategoryLookupModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
-                    };
-                    _cache.Set("CacheCategories", categoryList, new DistributedCacheEntryOptions()
-                    {
-                        AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
-                    });
-                    return categoryList;
-                }
+                        var categoryList = new CategoryListViewModel
+                        {
+                            Categories = await _context.Set<Entities.Category>()
+                                .ProjectTo<CategoryLookupModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
+                        };
+                        _cache.Set("CacheCategories", categoryList, new DistributedCacheEntryOptions()
+                        {
+                            AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
+                        });
+                        return categoryList;
+                    }
 
-                return cachedData;
+                    return cachedData;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+              
 
             }
         }

@@ -21,6 +21,7 @@ using Core.Interface;
 using Couchbase.Extensions.Caching;
 using Couchbase.Extensions.DependencyInjection;
 using FluentValidation;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -57,9 +58,9 @@ namespace WabApi
             services.AddScoped<ITokenHelper, JwtHelper>();
            
             services.AddControllers().AddControllersAsServices();
-           
 
 
+            services.AddHangfire(_ => _.UseSqlServerStorage(Configuration.GetValue<string>("HangfireDbConn")));
 
             services.AddCors(options =>
             {
@@ -123,7 +124,10 @@ namespace WabApi
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseSecurityHeaders();
+            app.UseHangfireDashboard();
+            app.UseHangfireServer();
+            
+            app.ApplicationBuilder();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
