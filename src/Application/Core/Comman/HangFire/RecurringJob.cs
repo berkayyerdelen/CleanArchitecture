@@ -18,8 +18,7 @@ namespace Core.Comman.HangFire
         }
         public async Task ProcessRecurringJob()
         {
-           
-           await _mediator.Send(new GetCategoryListQuery(), _cancellationToken);
+            await _mediator.Send(new GetCategoryListQuery(), _cancellationToken);
         }
     }
 }

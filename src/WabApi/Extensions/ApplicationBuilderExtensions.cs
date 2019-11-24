@@ -51,7 +51,7 @@ namespace WabApi.Extensions
             _mediator = mediator;
             this.next = next;
         }
-      
+
 
         public async Task Invoke(HttpContext context)
         {
@@ -59,7 +59,7 @@ namespace WabApi.Extensions
 
             //var delayedJob = new DelayedJob();
 
-            var recurringJob= new RecurringJob(_mediator);
+            var recurringJob = new RecurringJob(_mediator);
 
             //var continuationsJob = new ContinuationsJob();
             await next(context);
