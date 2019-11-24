@@ -7,13 +7,15 @@ using MediatR;
 
 namespace Core.Domains.Customer.Commands.CreateOrderwithDetails
 {
-    public class CreateOrderWithDetailsCommand : IRequest
+    public class CreateOrderWithDetailsCommand : IRequest,IHaveCustomMapping
     {
 
         public CreateOrderWithDetailsCommand()
         {
             OrderDetails = new HashSet<Details>();
         }
+
+       
         public int CustomerId { get; set; }
         public DateTime? OrderDate { get; set; }
         public DateTime? RequiredDate { get; set; }
@@ -29,6 +31,11 @@ namespace Core.Domains.Customer.Commands.CreateOrderwithDetails
         public ICollection<Details> OrderDetails { get; private set; }
 
 
+        public void CreateMappings(Profile configuration)
+        {
+            configuration.CreateMap<CreateOrderWithDetailsCommand, Order>();
+            configuration.CreateMap<Details, OrderDetails>();
+        }
     }
 
     public class Details

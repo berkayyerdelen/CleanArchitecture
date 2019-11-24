@@ -15,6 +15,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Collection" Version="5.0.0" />
+    <PackageReference Include="AutoMapper.Collection.EntityFrameworkCore" Version="1.0.1" />
     <PackageReference Include="Couchbase.Extensions.Caching" Version="1.0.2" />
     <PackageReference Include="FluentValidation" Version="8.5.0" />
     <PackageReference Include="Hangfire" Version="1.7.7" />

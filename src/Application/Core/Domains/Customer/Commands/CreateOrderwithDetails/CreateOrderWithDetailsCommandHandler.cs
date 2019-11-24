@@ -24,23 +24,8 @@ namespace Core.Domains.Customer.Commands.CreateOrderwithDetails
             public async Task<Unit> Handle(CreateOrderWithDetailsCommand request, CancellationToken cancellationToken)
             {
 
-                var order = new Order()
-                {
-                    CustomerId = _appUserIdSession.JwtUserIdParse(),
-                    Freight = request.Freight,
-                    OrderDate = request.OrderDate,
-                    RequiredDate = request.RequiredDate,
-                    ShipAddress = request.ShipAddress,
-                    ShipCity = request.ShipCity,
-                    ShipCountry = request.ShipCountry,
-                    ShipName = request.ShipName,
-                    ShipPostalCode = request.ShipPostalCode,
-                    ShipRegion = request.ShipRegion,
-                    ShipVia = request.ShipVia,
-                    ShippedDate = request.ShippedDate
-
-                };
-
+                Order order = _mapper.Map<CreateOrderWithDetailsCommand, Order>(request);
+                order.CustomerId = _appUserIdSession.JwtUserIdParse();
                 await _context.Set<Order>().AddAsync(order, cancellationToken);
                 await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
