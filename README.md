@@ -40,6 +40,7 @@ Follow these steps to get your development environment set up:
   6. Serilog http://localhost:5341
   7. CouchBase http://127.0.0.1:8091/ui/
   8. MongoDb http://localhost:27017/serilogs/logs
+  9. Hangfire https://localhost:44384/
 
 
 ## Technologies
@@ -49,6 +50,7 @@ Follow these steps to get your development environment set up:
 * CouchBase Server 6.0.0
 * Seq 5.1
 * MongoDB 4.2.1
+* Hangfire 1.7.7
 
 
 ## Functionalities
@@ -57,6 +59,7 @@ Follow these steps to get your development environment set up:
 -	Caching with Couchbase
 -	Logging with Serilog
 -	Inserting AuditLogs to MongoDB
+-	Recursive method calls for couchbase cache with Hangfire
 
 ## TO-DO list
 -   Full API testing results will be provided once the application will have been completed

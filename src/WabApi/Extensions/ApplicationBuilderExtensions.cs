@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Comman.HangFire;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
 namespace WabApi.Extensions
 {
-    public static class IApplicationBuilderExtensions
+    public static class ApplicationBuilderExtensions
     {
-        public static void UseSecurityHeaders(
+        public static void ApplicationBuilder(
             this IApplicationBuilder app)
         {
             app.UseMiddleware<SecurityHeadersMiddleware>();
+            app.UseMiddleware<HanfireMiddleware>();
         }
     }
     public class SecurityHeadersMiddleware
@@ -34,6 +37,31 @@ namespace WabApi.Extensions
                 "Feature-Policy", "camera 'none'");
             context.Response.Headers.Add(
                 "X-Content-Type-Options", "nosniff");
+            await next(context);
+        }
+
+    }
+
+    public class HanfireMiddleware
+    {
+        private readonly RequestDelegate next;
+        private readonly IMediator _mediator;
+        public HanfireMiddleware(RequestDelegate next, IMediator mediator)
+        {
+            _mediator = mediator;
+            this.next = next;
+        }
+
+
+        public async Task Invoke(HttpContext context)
+        {
+            //var fireandForgetJob = new FireAndForgetJob();
+
+            //var delayedJob = new DelayedJob();
+
+            var recurringJob = new RecurringJob(_mediator);
+
+            //var continuationsJob = new ContinuationsJob();
             await next(context);
         }
 
