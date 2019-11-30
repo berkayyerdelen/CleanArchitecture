@@ -5,7 +5,7 @@ using Couchbase.Extensions.Caching;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 
-namespace Core.Comman.Caching
+namespace Core.Comman.Cachingl
 {
     public class Cacher : ICaching
     {
@@ -18,7 +18,6 @@ namespace Core.Comman.Caching
             return JsonConvert.SerializeObject(cachedData);
 
         }
-
         public void SetCache(string cacheKey, object obj)
         {
             _cacher.Set(cacheKey, obj, new DistributedCacheEntryOptions() { AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1) });
