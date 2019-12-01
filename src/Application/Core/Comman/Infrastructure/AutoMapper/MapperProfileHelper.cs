@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Core.Interface.Mapping;
 
-namespace Core.Infrastructure.AutoMapper
+namespace Core.Comman.Infrastructure.AutoMapper
 {
     public sealed class Map
     {

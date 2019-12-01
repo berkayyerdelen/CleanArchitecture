@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
-using Core.Infrastructure.AutoMapper;
+
 
 namespace Core.Comman.Infrastructure.AutoMapper
 {
