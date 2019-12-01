@@ -2,25 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
+using Core.Comman.Caching.CouchBase;
 using Core.Comman.Infrastructure;
 using Core.Comman.Infrastructure.AutoMapper;
 using Core.Comman.Interface.AppUserSession;
 using Core.Comman.Security.Encryption;
 using Core.Comman.Security.Jwt;
-using Core.Domains.Category.Commands.CreateCategory;
-using Core.Domains.Category.Commands.DeleteCategory;
-using Core.Domains.Category.Commands.UpdateCategory;
-using Core.Domains.OperationClaim.Command.CreateOperationClaim;
-using Core.Domains.OperationClaim.Command.DeleteOperationClaim;
-using Core.Domains.OperationClaim.Command.UpdateOperationClaim;
-using Core.Domains.Product.Commands.CreateProduct;
-using Core.Domains.Product.Commands.DeleteProduct;
-using Core.Domains.Product.Commands.UpdateProduct;
 using FluentValidation.AspNetCore;
 using Core.Interface;
+using Couchbase.Configuration.Server.Providers;
 using Couchbase.Extensions.Caching;
 using Couchbase.Extensions.DependencyInjection;
-using FluentValidation;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -56,6 +48,7 @@ namespace WabApi
             services.AddMvc().AddFluentValidation();
             services.AddScoped<IAppUserIdSession, AppUserIdSession>();
             services.AddScoped<ITokenHelper, JwtHelper>();
+            services.AddScoped(typeof(ICouchBaseRepository<>), typeof(CouchBaseRepository<>));
            
             services.AddControllers().AddControllersAsServices();
 
@@ -94,7 +87,8 @@ namespace WabApi
             });
             services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"),opt => { });
             services.AddSwagger();
-          
+           
+
 
         }
 

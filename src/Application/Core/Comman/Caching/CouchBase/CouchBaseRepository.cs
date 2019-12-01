@@ -12,16 +12,19 @@ namespace Core.Comman.Caching.CouchBase
     {
         private readonly IBucket _bucket;
 
-        public CouchBaseRepository(IBucketProvider bucketprovider) => _bucket = bucketprovider.GetBucket("dualist1224","lejyoner+9");
+        public CouchBaseRepository(IBucketProvider bucketprovider) => _bucket = bucketprovider.GetBucket("mycache");
 
-        public async Task<bool> Add(TEntity entity)
+        public async Task<bool> Add(TEntity entity,string cachekey)
         {
+            //CREATE INDEX ID on `mycache`(meta().id);
             var result =await _bucket.InsertAsync(new Document<dynamic>()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = cachekey,
                 Content =  entity,
-                Expiry = 30
+                //Expiry = 20000  //20 sec
+                Expiry = 3000000,
             });
+            
             return result.Success;
         }
 
@@ -31,7 +34,7 @@ namespace Core.Comman.Caching.CouchBase
             return result.Success;
         }
 
-        public async Task<TEntity> GetById(string id)
+        public async Task<TEntity> GetByKey(string id)
         {
             var result = await _bucket.GetAsync<TEntity>(id);
             return result.Value;

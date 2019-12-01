@@ -10,7 +10,7 @@ namespace Core.Comman.HangFire
     public class RecurringJob
     {
         private readonly IMediator _mediator;
-        private readonly CancellationToken _cancellationToken;
+        //private readonly CancellationToken _cancellationToken;
         public RecurringJob(IMediator mediator)
         {
             _mediator = mediator;
@@ -18,7 +18,7 @@ namespace Core.Comman.HangFire
         }
         public async Task ProcessRecurringJob()
         {
-            await _mediator.Send(new GetCategoryListQuery(), _cancellationToken);
+            await _mediator.Send(new GetCategoryListQuery(), CancellationToken.None);
         }
     }
 }

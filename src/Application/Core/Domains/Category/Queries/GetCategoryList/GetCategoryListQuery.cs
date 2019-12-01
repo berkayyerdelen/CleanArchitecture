@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Core.Comman.Infrastructure;
 using Core.Interface;
-using Couchbase.Extensions.Caching;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
@@ -17,37 +16,28 @@ namespace Core.Domains.Category.Queries.GetCategoryList
         {
             private readonly IApplicationDbContext _context;
             private readonly IMapper _mapper;
-            private readonly IDistributedCache _cache;
-            public Handler(IApplicationDbContext context, IMapper mapper, IDistributedCache cache)
-                => (_context, _mapper, _cache) = (context, mapper, cache);
+            private readonly ICouchBaseRepository<CategoryListViewModel> _couchBaseRepository;
+
+            public Handler(IApplicationDbContext context, IMapper mapper, IDistributedCache cache, ICouchBaseRepository<CategoryListViewModel> couchBaseRepository)
+                => (_context, _mapper, _couchBaseRepository) = (context, mapper, couchBaseRepository);
 
             public async Task<CategoryListViewModel> Handle(GetCategoryListQuery request, CancellationToken cancellationToken)
             {
-                try
-                {
-                    var cachedData = _cache.Get<CategoryListViewModel>("CacheCategories");
-                    if (cachedData is null)
-                    {
-                        var categoryList = new CategoryListViewModel
-                        {
-                            Categories = await _context.Set<Entities.Category>()
-                                .ProjectTo<CategoryLookupModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
-                        };
-                        _cache.Set("CacheCategories", categoryList, new DistributedCacheEntryOptions()
-                        {
-                            AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
-                        });
-                        return categoryList;
-                    }
+                var cachedData = _couchBaseRepository.GetByKey("CacheCategories").Result;
 
-                    return cachedData;
-                }
-                catch (Exception e)
+                if (cachedData is null)
                 {
-                    Console.WriteLine(e);
-                    throw;
+                    var categoryList = new CategoryListViewModel
+                    {
+                        Categories = await _context.Set<Entities.Category>()
+                            .ProjectTo<CategoryLookupModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
+                    };
+                    await _couchBaseRepository.Add(categoryList, "CacheCategories");
+
+                    return categoryList;
                 }
-              
+
+                return cachedData;
 
             }
         }
