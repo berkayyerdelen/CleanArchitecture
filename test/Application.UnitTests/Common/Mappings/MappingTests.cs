@@ -18,14 +18,14 @@ namespace Application.UnitTests.Common.Mappings
         }
 
         [Fact]
-        public void ShouldHaveValidConfiguration()
+        public void Should_Have_Valid_Configuration()
         {
             _configuration.AssertConfigurationIsValid();
         }
 
         [Theory]
         [InlineData(typeof(FindProductByNameLookupModel), typeof(Entities.Product))]
-        public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
+        public void Should_Support_Mapping_From_Source_To_Destination(Type source, Type destination)
         {
 
             var instance = Activator.CreateInstance(source);
