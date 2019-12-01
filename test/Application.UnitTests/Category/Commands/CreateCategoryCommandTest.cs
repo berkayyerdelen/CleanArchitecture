@@ -10,7 +10,7 @@ namespace Application.UnitTests.Category.Commands
     public class CreateCategoryCommandTest: CommandTestBase
     {
         [Fact]
-        public async Task Handle_ShouldPersistTodoItem()
+        public async Task Handle_Create_Category()
         {
             var command = new CreateCategoryCommand
             {
