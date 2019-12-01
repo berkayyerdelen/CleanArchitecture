@@ -47,7 +47,7 @@ namespace Core.Comman.Caching.CouchBase
 
         public async Task Upsert(string cachekey, TEntity entity)
         {
-            var updatedDoc = new Document<dynamic> { Id = cachekey, Content = entity };
+            var updatedDoc = new Document<dynamic> { Id = cachekey, Content = entity, Expiry = 20000 };
             await _bucket.UpsertAsync(updatedDoc);
             
         }
