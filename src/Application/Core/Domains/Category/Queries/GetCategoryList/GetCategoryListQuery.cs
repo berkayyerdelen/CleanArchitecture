@@ -18,9 +18,12 @@ namespace Core.Domains.Category.Queries.GetCategoryList
             private readonly IMapper _mapper;
             private readonly ICouchBaseRepository<CategoryListViewModel> _couchBaseRepository;
 
-            public Handler(IApplicationDbContext context, IMapper mapper, IDistributedCache cache, ICouchBaseRepository<CategoryListViewModel> couchBaseRepository)
+            public Handler(IApplicationDbContext context, IMapper mapper,  ICouchBaseRepository<CategoryListViewModel> couchBaseRepository)
                 => (_context, _mapper, _couchBaseRepository) = (context, mapper, couchBaseRepository);
 
+            public Handler(IApplicationDbContext context, IMapper mapper) 
+                => (_context, _mapper) = (context, mapper);
+            
             public async Task<CategoryListViewModel> Handle(GetCategoryListQuery request, CancellationToken cancellationToken)
             {
                 var cachedData = _couchBaseRepository.GetByKey("CacheCategories").Result;

@@ -29,6 +29,11 @@ namespace Persistence
         public DbSet<Product> Products { get; set; }
         public DbSet<Audit> Audits { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        }
+
         public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
         {
             var auditEntries = OnBeforeSaveChanges();

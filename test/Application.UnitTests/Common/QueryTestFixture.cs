@@ -8,26 +8,21 @@ namespace Application.UnitTests.Common
 {
     public class QueryTestFixture:IDisposable
     {
-        public ApplicationDbContext Context { get; set; }
-        public IMapper Mapper { get; set; }
+        public ApplicationDbContext Context { get; private set; }
+        public IMapper Mapper { get; private set; }
 
-     
         public QueryTestFixture()
         {
             Context = ApplicationContextFactory.Create();
-
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            Mapper = configurationProvider.CreateMapper();
+            Mapper = AutoMapperFactory.Create();
         }
+
         public void Dispose()
         {
             ApplicationContextFactory.Destroy(Context);
         }
-        [CollectionDefinition("QueryCollection")]
-        public class QueryCollection : ICollectionFixture<QueryTestFixture> { }
     }
+
+    [Collection("QueryCollection")]
+    public class QueryCollection : ICollectionFixture<QueryTestFixture> { }
 }

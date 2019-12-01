@@ -9,8 +9,10 @@ namespace Application.UnitTests.Common
     {
         public static ApplicationDbContext Create()
         {
+            
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                .Options;
 
             var context = new ApplicationDbContext(options);
 
