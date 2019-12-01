@@ -8,7 +8,6 @@ namespace Core.Comman.Infrastructure
         Task<bool> IsExists(string id);
         Task<bool> Add(TEntity entity);
         Task<bool> Upsert(string id, TEntity entity);
-        Task<bool> Patch(string id, TEntity entity);
         Task<bool> Delete(string id);
     }
 }

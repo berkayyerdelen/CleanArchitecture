@@ -27,27 +27,26 @@ namespace Core.Comman.Caching.CouchBase
 
         public async Task<bool> Delete(string id)
         {
-            throw new System.NotImplementedException();
+            var result = await _bucket.RemoveAsync(id);
+            return result.Success;
         }
 
         public async Task<TEntity> GetById(string id)
         {
-            throw new System.NotImplementedException();
+            var result = await _bucket.GetAsync<TEntity>(id);
+            return result.Value;
         }
 
         public async Task<bool> IsExists(string id)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task<bool> Patch(string id, TEntity entity)
-        {
-            throw new System.NotImplementedException();
+            var result = await _bucket.ExistsAsync(id);
+            return result;
         }
 
         public async Task<bool> Upsert(string id, TEntity entity)
         {
-            throw new System.NotImplementedException();
+            var result = await _bucket.GetAsync<TEntity>(id);
+            return result.Success;
         }
     }
 }
