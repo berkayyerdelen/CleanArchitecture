@@ -21,35 +21,35 @@ namespace Core.Comman.Caching.CouchBase
             {
                 Id = cachekey,
                 Content =  entity,
-                //Expiry = 20000  //20 sec
-                Expiry = 3000000,
+                Expiry = 20000  //20 sec
             });
             
             return result.Success;
         }
 
-        public async Task<bool> Delete(string id)
+        public async Task<bool> Delete(string cachekey)
         {
-            var result = await _bucket.RemoveAsync(id);
+            var result = await _bucket.RemoveAsync(cachekey);
             return result.Success;
         }
 
-        public async Task<TEntity> GetByKey(string id)
+        public async Task<TEntity> GetByKey(string cachekey)
         {
-            var result = await _bucket.GetAsync<TEntity>(id);
+            var result = await _bucket.GetAsync<TEntity>(cachekey);
             return result.Value;
         }
 
-        public async Task<bool> IsExists(string id)
+        public async Task<bool> IsExists(string cachekey)
         {
-            var result = await _bucket.ExistsAsync(id);
+            var result = await _bucket.ExistsAsync(cachekey);
             return result;
         }
 
-        public async Task<bool> Upsert(string id, TEntity entity)
+        public async Task Upsert(string cachekey, TEntity entity)
         {
-            var result = await _bucket.GetAsync<TEntity>(id);
-            return result.Success;
+            var updatedDoc = new Document<dynamic> { Id = cachekey, Content = entity };
+            await _bucket.UpsertAsync(updatedDoc);
+            
         }
     }
 }

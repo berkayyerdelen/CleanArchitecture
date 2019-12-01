@@ -4,10 +4,10 @@ namespace Core.Comman.Infrastructure
 {
     public interface ICouchBaseRepository<TEntity>
     {
-        Task<TEntity> GetByKey(string id);
-        Task<bool> IsExists(string id);
+        Task<TEntity> GetByKey(string cachekey);
+        Task<bool> IsExists(string cachekey);
         Task<bool> Add(TEntity entity, string cacheKey);
-        Task<bool> Upsert(string id, TEntity entity);
-        Task<bool> Delete(string id);
+        Task Upsert(string cachekey, TEntity entity);
+        Task<bool> Delete(string cachekey);
     }
 }
