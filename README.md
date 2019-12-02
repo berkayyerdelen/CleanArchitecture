@@ -60,6 +60,7 @@ Follow these steps to get your development environment set up:
 -	Logging with Serilog
 -	Inserting AuditLogs to MongoDB
 -	Recursive method calls for couchbase cache with Hangfire
+-	Couchbase management
 
 ## TO-DO list
 -   Full API testing results will be provided once the application will have been completed
