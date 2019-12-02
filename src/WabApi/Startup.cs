@@ -10,7 +10,6 @@ using Core.Comman.Security.Encryption;
 using Core.Comman.Security.Jwt;
 using FluentValidation.AspNetCore;
 using Core.Interface;
-using Couchbase.Configuration.Server.Providers;
 using Couchbase.Extensions.Caching;
 using Couchbase.Extensions.DependencyInjection;
 using Hangfire;
