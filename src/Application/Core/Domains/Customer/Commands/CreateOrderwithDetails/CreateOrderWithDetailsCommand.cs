@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
-using Core.Interface.Mapping;
+using Core.Comman.Interface.Mapping;
 using Entities;
 using MediatR;
 

@@ -5,7 +5,7 @@ using Core.Domains.Category.Queries.GetCategoryList;
 using Hangfire;
 using MediatR;
 
-namespace Core.Comman.HangFire
+namespace Core.Comman.Infrastructure.HangFire
 {
     public class RecurringJob
     {

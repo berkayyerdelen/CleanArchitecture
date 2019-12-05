@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Core.Interface.Mapping;
+using Core.Comman.Interface.Mapping;
+
 
 namespace Core.Comman.Infrastructure.AutoMapper
 {

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Core.Comman.Exceptions;
-using Core.Interface;
+using Core.Comman.Interface;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

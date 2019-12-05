@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using Core.Comman.Infrastructure;
+﻿using System.Threading.Tasks;
+using Core.Comman.Interface.Caching;
 using Couchbase;
 using Couchbase.Core;
 using Couchbase.Extensions.DependencyInjection;
-using NLog.LayoutRenderers;
 
-namespace Core.Comman.Caching.CouchBase
+
+namespace Core.Comman.Infrastructure.Caching.CouchBase
 {
     public class CouchBaseRepository<TEntity> : ICouchBaseRepository<TEntity> where TEntity : class, new()
     {

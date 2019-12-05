@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Core.Comman.HangFire;
-using Core.Comman.Infrastructure;
-using Core.Comman.Security.Jwt;
-using Core.Domains.Category.Commands.CreateCategory;
+﻿using Core.Domains.Category.Commands.CreateCategory;
 using Core.Domains.Category.Commands.DeleteCategory;
 using Core.Domains.Category.Commands.UpdateCategory;
 using Core.Domains.Category.Queries.FindCategoryByName;

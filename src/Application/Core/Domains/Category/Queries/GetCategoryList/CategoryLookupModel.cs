@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using Core.Interface.Mapping;
+using Core.Comman.Interface.Mapping;
 
 namespace Core.Domains.Category.Queries.GetCategoryList
 {

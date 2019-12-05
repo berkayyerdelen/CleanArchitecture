@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Core.Interface.Mapping;
+using Core.Comman.Interface.Mapping;
 using Entities;
 
 namespace Core.Domains.CustomerOperationClaim.Queries.FindCustomerByMail

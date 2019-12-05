@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Core.Comman.Interface;
 using Core.Domains.Customer.Queries.CreateAccessToken;
 using Core.Domains.Customer.Queries.LoginCheckCustomer;
-using Core.Interface;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

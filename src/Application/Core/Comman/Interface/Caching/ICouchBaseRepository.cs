@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Core.Comman.Infrastructure
+namespace Core.Comman.Interface.Caching
 {
     public interface ICouchBaseRepository<TEntity>
     {

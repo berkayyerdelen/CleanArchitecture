@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Core.Interface.Mapping
+namespace Core.Comman.Interface.Mapping
 {
     public interface IHaveCustomMapping
     {

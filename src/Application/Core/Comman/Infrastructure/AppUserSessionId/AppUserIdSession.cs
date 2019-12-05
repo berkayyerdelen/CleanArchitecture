@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Core.Comman.Infrastructure
+namespace Core.Comman.Infrastructure.AppUserSessionId
 {
     public class AppUserIdSession : IAppUserIdSession
     {

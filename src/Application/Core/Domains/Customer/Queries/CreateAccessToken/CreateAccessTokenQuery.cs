@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Core.Comman.Interface;
 using Core.Comman.Security.Jwt;
-using Core.Interface;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
