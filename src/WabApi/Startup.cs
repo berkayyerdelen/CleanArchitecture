@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
-using Core.Comman.Infrastructure;
 using Core.Comman.Infrastructure.AppUserSessionId;
 using Core.Comman.Infrastructure.AutoMapper;
 using Core.Comman.Infrastructure.Caching.CouchBase;
@@ -47,10 +46,11 @@ namespace WabApi
             services.AddScoped<IApplicationDbContext>(s => s.GetService<ApplicationDbContext>());
             services.AddAutoMapper(new Assembly[] { typeof(AutoMapperProfile).GetTypeInfo().Assembly });
             services.AddMvc().AddFluentValidation();
+
             services.AddScoped<IAppUserIdSession, AppUserIdSession>();
             services.AddScoped<ITokenHelper, JwtHelper>();
             services.AddScoped(typeof(ICouchBaseRepository<>), typeof(CouchBaseRepository<>));
-           
+
             services.AddControllers().AddControllersAsServices();
 
 
@@ -88,9 +88,7 @@ namespace WabApi
             });
             services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"),opt => { });
             services.AddSwagger();
-           
-
-
+            
         }
 
       
