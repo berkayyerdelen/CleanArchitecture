@@ -36,4 +36,8 @@
     <ProjectReference Include="..\Infrastructure\Persistence.MSSQL\Persistence.MSSQL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
+
 </Project>
