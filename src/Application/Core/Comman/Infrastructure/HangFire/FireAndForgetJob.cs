@@ -1,7 +1,7 @@
 ﻿using System;
 using Hangfire;
 
-namespace Core.Comman.HangFire
+namespace Core.Comman.Infrastructure.HangFire
 {
     public class FireAndForgetJob
     {

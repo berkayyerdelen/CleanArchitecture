@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Core.Comman.Exceptions;
-using Core.Interface;
+using Core.Comman.Interface;
 using MediatR;
 
 namespace Core.Domains.Product.Commands.UpdateProduct

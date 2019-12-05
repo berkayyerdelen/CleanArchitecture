@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Core.Interface;
+using Core.Comman.Interface;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 

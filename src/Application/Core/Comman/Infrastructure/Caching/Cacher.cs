@@ -5,7 +5,7 @@ using Couchbase.Extensions.Caching;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 
-namespace Core.Comman.Cachingl
+namespace Core.Comman.Infrastructure.Caching
 {
     public class Cacher : ICaching
     {

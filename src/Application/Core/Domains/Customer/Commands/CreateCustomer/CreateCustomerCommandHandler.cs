@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Core.Comman.Interface;
 using Core.Comman.Security;
-using Core.Interface;
 using MediatR;
 
 namespace Core.Domains.Customer.Commands.CreateCustomer

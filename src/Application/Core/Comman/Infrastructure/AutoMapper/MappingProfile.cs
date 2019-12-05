@@ -4,7 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using AutoMapper;
-using Core.Interface.Mapping;
+using Core.Comman.Interface.Mapping;
+
 
 namespace Core.Comman.Infrastructure.AutoMapper
 {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Core.Interface;
+using Core.Comman.Interface;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

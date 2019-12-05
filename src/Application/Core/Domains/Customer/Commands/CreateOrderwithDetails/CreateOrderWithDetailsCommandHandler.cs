@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Core.Comman.Interface;
 using Core.Comman.Interface.AppUserSession;
-using Core.Interface;
 using Entities;
 using MediatR;
 

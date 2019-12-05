@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
-using Core.Comman.Caching.CouchBase;
 using Core.Comman.Infrastructure;
+using Core.Comman.Infrastructure.AppUserSessionId;
 using Core.Comman.Infrastructure.AutoMapper;
+using Core.Comman.Infrastructure.Caching.CouchBase;
 using Core.Comman.Interface.AppUserSession;
 using Core.Comman.Security.Encryption;
 using Core.Comman.Security.Jwt;
 using FluentValidation.AspNetCore;
-using Core.Interface;
 using Couchbase.Extensions.Caching;
 using Couchbase.Extensions.DependencyInjection;
 using Hangfire;
@@ -23,6 +23,8 @@ using Serilog;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using WabApi.Extensions;
+using Core.Comman.Interface;
+using Core.Comman.Interface.Caching;
 
 namespace WabApi
 {
