@@ -18,10 +18,8 @@ using Core.Domains.Product.Commands.DeleteProduct;
 using Core.Domains.Product.Commands.UpdateProduct;
 using Core.Domains.Product.Queries.FindProductByName;
 using Core.Domains.Product.Queries.GetProductList;
-using Couchbase.Extensions.DependencyInjection;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
@@ -29,11 +27,9 @@ using Microsoft.OpenApi.Models;
 namespace WabApi.Extensions
 {
     public static class ServiceCollectionExtensions
-    {
-     
+    { 
         public static void AssignMediatr(this IServiceCollection service)
         {
-           
             service.AddMediatR(typeof(CreateCategoryCommand));
             service.AddMediatR(typeof(UpdateCategoryCommand));
             service.AddMediatR(typeof(DeleteCategoryCommand));
@@ -58,8 +54,6 @@ namespace WabApi.Extensions
             service.AddMediatR(typeof(UpdateProductCommand));
             service.AddMediatR(typeof(FindProductByNameQuery));
             service.AddMediatR(typeof(GetProductListQuery));
-
-        
         }
 
         public static void ConfigureValidations(this IServiceCollection service)
@@ -76,16 +70,6 @@ namespace WabApi.Extensions
             ServiceDescriptor.Scoped<IValidator<DeleteOperationClaimCommandHandler>, DeleteOperationClaimCommandHandlerValidator>(),
             ServiceDescriptor.Scoped<IValidator<UpdateOperationClaimCommandHandler>, UpdateOperationClaimHandlerValidator>(),
             });
-            //service.AddSingleton<IValidator<CreateCategoryCommand>, CreateCategoryCommandValidator>();
-            //service.AddSingleton<IValidator<DeleteCategoryCommand>, DeleteCategoryCommandValidator>();
-            //service.AddSingleton<IValidator<UpdateCategoryCommand>, UpdateCategoryCommandValidator>();
-            //service.AddSingleton<IValidator<CreateProductCommand>, CreateProductCommandValidator>();
-            //service.AddSingleton<IValidator<DeleteProductCommand>, DeleteProductCommandValidator>();
-            //service.AddSingleton<IValidator<UpdateProductCommand>, UpdateProductCommandValidator>();
-            //service.AddSingleton<IValidator<CreateOperationClaimCommandHandler>, CreateOperationClaimCommandHandlerValidator>();
-            //service.AddSingleton<IValidator<DeleteOperationClaimCommandHandler>, DeleteOperationClaimCommandHandlerValidator>();
-            //service.AddSingleton<IValidator<UpdateOperationClaimCommandHandler>, UpdateOperationClaimHandlerValidator>();
-            //return service;
         }
 
       

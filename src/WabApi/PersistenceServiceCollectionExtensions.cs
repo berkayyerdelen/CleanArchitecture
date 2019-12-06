@@ -16,13 +16,11 @@ namespace WabApi
             {
                 serviceCollection.AddMssqlDbContext(config);
             }
-
-
             return serviceCollection;
         }
     }
 }
 public class PersistenceConfiguration
-{
+{ 
     public string Provider { get; set; }
 }

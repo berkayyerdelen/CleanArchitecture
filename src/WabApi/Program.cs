@@ -13,7 +13,6 @@ namespace WabApi
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-               // `LogEventLevel` requires `using Serilog.Events;`
                 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Error)
                 .Enrich.FromLogContext()
                 //.WriteTo.Console()
@@ -37,7 +36,6 @@ namespace WabApi
             }
 
         }
-
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args).UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
