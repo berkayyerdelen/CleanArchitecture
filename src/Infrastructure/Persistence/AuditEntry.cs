@@ -9,10 +9,8 @@ namespace Persistence
 {
     public class AuditEntry
     {
-        public AuditEntry(EntityEntry entry)
-        {
-            Entry = entry;
-        }
+        public AuditEntry(EntityEntry entry) 
+            => Entry = entry;
         public EntityEntry Entry { get; }
         public string TableName { get; set; }
         public Dictionary<string, object> KeyValues { get; } = new Dictionary<string, object>();
