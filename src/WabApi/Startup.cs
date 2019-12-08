@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
+using Core.Comman.Behaviours;
 using Core.Comman.Infrastructure.AppUserSessionId;
 using Core.Comman.Infrastructure.AutoMapper;
 using Core.Comman.Infrastructure.Caching.CouchBase;
@@ -25,6 +26,7 @@ using Microsoft.IdentityModel.Tokens;
 using WabApi.Extensions;
 using Core.Comman.Interface;
 using Core.Comman.Interface.Caching;
+using MediatR;
 
 namespace WabApi
 {
@@ -54,7 +56,9 @@ namespace WabApi
             services.AddScoped(typeof(ICouchBaseRepository<>), typeof(CouchBaseRepository<>));
 
             services.AddControllers().AddControllersAsServices();
-
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddTransient(typeof(RequestLogger <>));
 
             services.AddHangfire(_ => _.UseSqlServerStorage(Configuration.GetValue<string>("HangfireDbConn")));
 
@@ -118,7 +122,8 @@ namespace WabApi
 
             app.UseHangfireDashboard();
             app.UseHangfireServer();
-            
+            //app.UseMiddleware(typeof(RequestLogger<>));
+
             app.ApplicationBuilder();
             app.UseEndpoints(endpoints =>
             {

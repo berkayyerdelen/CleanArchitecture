@@ -26,15 +26,15 @@ namespace Core.Comman.Infrastructure.AppUserSessionId
                 {
                     throw new CookieIsNullException();
                 }
+
                 var readableToken = _jwtSecurityTokenHandler.CanReadToken(jwt);
                 var parSecurityToken = _jwtSecurityTokenHandler.ReadToken(jwt) as JwtSecurityToken;
                 return Convert.ToInt32(parSecurityToken?.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
-                
+
             }
-            catch (Exception e)
+            finally
             {
-                Console.WriteLine(e);
-                throw;
+
             }
 
         }
