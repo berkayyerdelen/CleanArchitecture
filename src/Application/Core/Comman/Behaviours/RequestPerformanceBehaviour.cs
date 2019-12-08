@@ -39,10 +39,14 @@ namespace Core.Comman.Behaviours
             if (elapsedMilliseconds > 500)
             {
                 var requestName = typeof(TRequest).Name;
-                var userId = _appUser.JwtUserIdParse();
-                var userName = _mediator.Send(new GetCustomerInfoQuery(new GetCustomerInfoLookModel() { UserId = userId }));
+                //var userId = _appUser.JwtUserIdParse();
+                //if (userId != 0)
+                //{
+                //    var userName = _mediator.Send(new GetCustomerInfoQuery(new GetCustomerInfoLookModel() { UserId = userId }));
+                //    _logger.LogWarning($" Running Request: {requestName} ({elapsedMilliseconds} milliseconds) {userId} {userName} {request}");
+                //}
+                _logger.LogWarning($" Running Request: {requestName} ({elapsedMilliseconds} milliseconds)   {request}");
 
-                _logger.LogWarning($" Running Request: {requestName} ({elapsedMilliseconds} milliseconds) {userId} {userName} {request}");
             }
 
             return response;
