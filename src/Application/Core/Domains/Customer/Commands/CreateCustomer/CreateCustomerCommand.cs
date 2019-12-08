@@ -1,6 +1,4 @@
-﻿using System;
-using Entities;
-using MediatR;
+﻿using MediatR;
 
 namespace Core.Domains.Customer.Commands.CreateCustomer
 {

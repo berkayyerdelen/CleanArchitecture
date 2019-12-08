@@ -8,7 +8,6 @@ using Core.Domains.Category.Queries.GetCategoryList;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 
 namespace WabApi.Controllers

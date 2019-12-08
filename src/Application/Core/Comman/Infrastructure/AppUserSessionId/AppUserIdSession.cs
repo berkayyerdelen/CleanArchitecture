@@ -5,8 +5,6 @@ using System.Security.Claims;
 using Core.Comman.Exceptions;
 using Core.Comman.Interface.AppUserSession;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Core.Comman.Infrastructure.AppUserSessionId
 {

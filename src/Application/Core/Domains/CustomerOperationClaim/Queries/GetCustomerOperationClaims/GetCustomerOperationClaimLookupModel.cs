@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Core.Comman.Interface.Mapping;
-using Entities;
 
 namespace Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims
 {

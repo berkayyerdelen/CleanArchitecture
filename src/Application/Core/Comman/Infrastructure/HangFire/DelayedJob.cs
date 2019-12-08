@@ -1,5 +1,4 @@
 ﻿using System;
-using Hangfire;
 
 namespace Core.Comman.Infrastructure.HangFire
 {

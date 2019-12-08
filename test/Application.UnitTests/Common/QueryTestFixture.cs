@@ -1,6 +1,5 @@
 ﻿using System;
 using AutoMapper;
-using Core.Comman.Infrastructure.AutoMapper;
 using Persistence;
 using Xunit;
 

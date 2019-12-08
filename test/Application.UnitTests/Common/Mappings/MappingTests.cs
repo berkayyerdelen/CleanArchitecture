@@ -1,6 +1,5 @@
 ﻿using System;
 using AutoMapper;
-using Core.Domains.Category.Commands.CreateCategory;
 using Core.Domains.Product.Queries.FindProductByName;
 using Xunit;
 

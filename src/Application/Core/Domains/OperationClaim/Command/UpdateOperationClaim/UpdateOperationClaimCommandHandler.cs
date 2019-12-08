@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Core.Comman.Interface;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Core.Domains.OperationClaim.Command.UpdateOperationClaim
 {

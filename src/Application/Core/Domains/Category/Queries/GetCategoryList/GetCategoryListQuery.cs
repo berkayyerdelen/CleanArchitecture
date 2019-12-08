@@ -2,12 +2,10 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Core.Comman.Infrastructure;
 using Core.Comman.Interface;
 using Core.Comman.Interface.Caching;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
 
 namespace Core.Domains.Category.Queries.GetCategoryList
 {

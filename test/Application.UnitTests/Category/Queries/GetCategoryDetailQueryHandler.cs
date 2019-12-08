@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using Application.UnitTests.Common;
 using AutoMapper;
-using Core.Comman.Infrastructure;
-using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Category.Queries.GetCategoryList;
 using Persistence;
 using Shouldly;
