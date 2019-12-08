@@ -5,6 +5,7 @@ using AutoMapper;
 using Core.Comman.Infrastructure.AppUserSessionId;
 using Core.Comman.Infrastructure.AutoMapper;
 using Core.Comman.Infrastructure.Caching.CouchBase;
+using Core.Comman.Infrastructure.Caching.MemoryCache;
 using Core.Comman.Interface.AppUserSession;
 using Core.Comman.Security.Encryption;
 using Core.Comman.Security.Jwt;
@@ -49,6 +50,7 @@ namespace WabApi
 
             services.AddScoped<IAppUserIdSession, AppUserIdSession>();
             services.AddScoped<ITokenHelper, JwtHelper>();
+            services.AddScoped<ICacheBaseRepository, CacheBaseRepository>();
             services.AddScoped(typeof(ICouchBaseRepository<>), typeof(CouchBaseRepository<>));
 
             services.AddControllers().AddControllersAsServices();

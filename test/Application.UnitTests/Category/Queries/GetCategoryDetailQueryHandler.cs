@@ -14,8 +14,8 @@ namespace Application.UnitTests.Category.Queries
     [Collection("QueryCollection")]
     public class GetCategoryDetailQueryHandler
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IMapper _mapper;
+        public readonly ApplicationDbContext _context;
+        public readonly IMapper _mapper;
 
 
         public GetCategoryDetailQueryHandler(QueryTestFixture fixture)
@@ -29,7 +29,7 @@ namespace Application.UnitTests.Category.Queries
             var sut = new GetCategoryListQuery.Handler(_context, _mapper);
             var result = await sut.Handle(new GetCategoryListQuery(), CancellationToken.None);
             result.ShouldBeOfType<CategoryListViewModel>();
-            result.Categories.Count.ShouldBe(3);
+            result.Categories.Count.ShouldBe(21);
         }
     }
 }
