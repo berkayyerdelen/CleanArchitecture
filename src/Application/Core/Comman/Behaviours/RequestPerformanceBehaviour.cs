@@ -39,6 +39,7 @@ namespace Core.Comman.Behaviours
             if (elapsedMilliseconds > 500)
             {
                 var requestName = typeof(TRequest).Name;
+                //TODO:Parse with cookie parser
                 //var userId = _appUser.JwtUserIdParse();
                 //if (userId != 0)
                 //{
