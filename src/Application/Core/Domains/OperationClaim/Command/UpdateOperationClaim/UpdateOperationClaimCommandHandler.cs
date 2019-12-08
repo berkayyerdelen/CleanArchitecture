@@ -8,7 +8,7 @@ namespace Core.Domains.OperationClaim.Command.UpdateOperationClaim
 {
     public class UpdateOperationClaimCommandHandler : IRequest
     {
-        public int OperationCliamId { get; set; }
+        public int OperationClaimId { get; set; }
         public string OperationClaimName { get; set; }
         public class Handler : IRequestHandler<UpdateOperationClaimCommandHandler, Unit>
         {
@@ -18,7 +18,7 @@ namespace Core.Domains.OperationClaim.Command.UpdateOperationClaim
             public async Task<Unit> Handle(UpdateOperationClaimCommandHandler request, CancellationToken cancellationToken)
             {
                 var entity = _context.Set<Entities.OperationClaim>()
-                    .FindAsync(request.OperationCliamId).Result;
+                    .FindAsync(request.OperationClaimId).Result;
                 entity.Name = request.OperationClaimName;
                 await _context.SaveChangesAsync(true, cancellationToken);
                 return Unit.Value;
