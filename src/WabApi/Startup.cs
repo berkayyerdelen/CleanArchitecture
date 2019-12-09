@@ -57,8 +57,9 @@ namespace WabApi
 
             services.AddControllers().AddControllersAsServices();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
-            services.AddTransient(typeof(RequestLogger <>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestLogger<,>));
+
 
             services.AddHangfire(_ => _.UseSqlServerStorage(Configuration.GetValue<string>("HangfireDbConn")));
 

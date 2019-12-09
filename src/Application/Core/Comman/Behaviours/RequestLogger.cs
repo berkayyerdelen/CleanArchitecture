@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Core.Comman.Behaviours
 {
-    public class RequestLogger<TRequest> : IRequest<TRequest>
+    public class RequestLogger<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly ILogger _logger;
         private readonly IMediator _mediator;
@@ -20,13 +20,16 @@ namespace Core.Comman.Behaviours
             _logger = logger;
         }
 
-        public void Process(TRequest request, CancellationToken cancellationToken)
+        
+        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
+            var response = await next();
             var requestName = typeof(TRequest).Name;
             var userId = _appUser.JwtUserIdParse();
-            var userName = _mediator.Send(new GetCustomerInfoQuery(new GetCustomerInfoLookModel(){UserId = userId}));
+            var userName = _mediator.Send(new GetCustomerInfoQuery(new GetCustomerInfoLookModel() { UserId = userId }));
             _logger.LogInformation($"Request performed by {userId}, {userName}, {requestName}");
-           
+            return response;
+
         }
     }
 }

@@ -15,27 +15,18 @@ namespace Core.Comman.Infrastructure.AppUserSessionId
         public AppUserIdSession(IHttpContextAccessor httpContextAccessor)
             => (_httpContextAccessor) = (httpContextAccessor);
 
-           
+
         public int JwtUserIdParse()
         {
-            try
-            {
-                JwtSecurityTokenHandler _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-                var jwt = _httpContextAccessor.HttpContext.Request.Cookies["jwt"];
-                if (String.IsNullOrEmpty(jwt))
-                {
-                    throw new CookieIsNullException();
-                }
 
-                var readableToken = _jwtSecurityTokenHandler.CanReadToken(jwt);
-                var parSecurityToken = _jwtSecurityTokenHandler.ReadToken(jwt) as JwtSecurityToken;
-                return Convert.ToInt32(parSecurityToken?.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
+            JwtSecurityTokenHandler _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            var jwt = _httpContextAccessor.HttpContext.Request.Cookies["jwt"];
+            if (String.IsNullOrEmpty(jwt))
+                return 0;
 
-            }
-            finally
-            {
-
-            }
+            var readableToken = _jwtSecurityTokenHandler.CanReadToken(jwt);
+            var parSecurityToken = _jwtSecurityTokenHandler.ReadToken(jwt) as JwtSecurityToken;
+            return Convert.ToInt32(parSecurityToken?.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
 
         }
     }

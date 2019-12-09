@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Core.Comman.Interface.AppUserSession;
-using Core.Domains.Customer.Queries.GetCustomerInfo;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -40,12 +38,12 @@ namespace Core.Comman.Behaviours
             {
                 var requestName = typeof(TRequest).Name;
                 //TODO:Parse with cookie parser
-                //var userId = _appUser.JwtUserIdParse();
-                //if (userId != 0)
-                //{
-                //    var userName = _mediator.Send(new GetCustomerInfoQuery(new GetCustomerInfoLookModel() { UserId = userId }));
-                //    _logger.LogWarning($" Running Request: {requestName} ({elapsedMilliseconds} milliseconds) {userId} {userName} {request}");
-                //}
+                var userId = _appUser.JwtUserIdParse();
+                if (userId != 0)
+                {
+                    //var userName = _mediator.Send(new GetCustomerInfoQuery(new GetCustomerInfoLookModel() { UserId = userId }));
+                    _logger.LogWarning($" Running Request: {requestName} ({elapsedMilliseconds} milliseconds) {userId} {request}");
+                }
                 _logger.LogWarning($" Running Request: {requestName} ({elapsedMilliseconds} milliseconds)   {request}");
 
             }
