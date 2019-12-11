@@ -21,6 +21,6 @@ namespace Entities
         public byte[] PasswordSalt { get; set; }
         [Column(Order = 6)]
         public byte[] PasswordHash { get; set; }
-        public virtual CustomerDetails CustomerDetails { get; set; }
+        public virtual CustomerDetails CustomerDetails { get; private set; }
     }
 }
