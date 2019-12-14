@@ -42,7 +42,7 @@ namespace WabApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.AssignMediatr();
             services.ConfigureValidations();
             services.AddConfiguredDbContext(Configuration);
@@ -56,22 +56,22 @@ namespace WabApi
             services.AddScoped(typeof(ICouchBaseRepository<>), typeof(CouchBaseRepository<>));
 
             services.AddControllers().AddControllersAsServices();
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
+
+            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestLogger<,>));
 
-
-            services.AddHangfire(_ => _.UseSqlServerStorage(Configuration.GetValue<string>("HangfireDbConn")));
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetValue<string>("HangfireDbConn")));
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowOrigin",builder=>builder.WithOrigins("http://localhost:3000"));
+                options.AddPolicy("AllowOrigin", builder => builder.WithOrigins("http://localhost:3000"));
             });
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
                 options =>
                 {
-                    options.TokenValidationParameters= new TokenValidationParameters
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
                         ValidateAudience = true,
@@ -85,7 +85,7 @@ namespace WabApi
 
             services.AddCouchbase(opt =>
             {
-                opt.Servers= new List<Uri>()
+                opt.Servers = new List<Uri>()
                 {
                     new Uri("http://localhost:8091")
                 };
@@ -93,12 +93,12 @@ namespace WabApi
                 opt.Password = Configuration.GetValue<string>("Couchbase:ClusterPassword");
                 opt.UseSsl = false;
             });
-            services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"),opt => { });
+            services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"), opt => { });
             services.AddSwagger();
-            
+
         }
 
-      
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -115,9 +115,9 @@ namespace WabApi
             app.UseCors(builders => builders.WithOrigins("http://localhost:3000").AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseSerilogRequestLogging();
-           
+
             app.UseRouting();
-            
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -131,6 +131,6 @@ namespace WabApi
                 endpoints.MapControllers();
             });
         }
-      
+
     }
 }
