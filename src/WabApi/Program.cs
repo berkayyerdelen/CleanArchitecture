@@ -12,7 +12,8 @@ namespace WabApi
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Error)
+                . MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
                 //.WriteTo.Console()
                 //.WriteTo.File(new CompactJsonFormatter(), "logs//log.json")

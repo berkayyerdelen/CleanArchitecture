@@ -27,6 +27,8 @@ using WabApi.Extensions;
 using Core.Comman.Interface;
 using Core.Comman.Interface.Caching;
 using MediatR;
+using Microsoft.Extensions.Logging;
+using WabApi.Infrastructure;
 
 namespace WabApi
 {
@@ -100,8 +102,9 @@ namespace WabApi
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddSerilog();
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -115,6 +118,7 @@ namespace WabApi
             app.UseCors(builders => builders.WithOrigins("http://localhost:3000").AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseSerilogRequestLogging();
+            app.UseMiddleware<SerilogMiddleware>();
 
             app.UseRouting();
 
