@@ -38,7 +38,6 @@ namespace WabApi.Extensions
 
             service.AddMediatR(typeof(CreateCustomerCommandHandler));
             service.AddMediatR(typeof(CheckCustomerExistQuery));
-            service.AddMediatR(typeof(CreateAccessTokenQuery));
             service.AddMediatR(typeof(CustomerLoginCheckQuery));
 
             service.AddMediatR(typeof(FindCustomerByMailQuery));

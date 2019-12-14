@@ -23,9 +23,8 @@ namespace WabApi.Controllers
         [AllowAnonymous]
         public  Task<CreateAccessTokenViewModel> Login(CustomerLoginCheckQuery request,CancellationToken ct)
         {
-            var userToLogin = _mediator.Send(request, ct).Result;
-            var result = _mediator.Send(new CreateAccessTokenQuery(userToLogin.Id));
-            return result;
+            var userToLogin = _mediator.Send(request, ct);
+            return userToLogin; 
         }
     }
 }
