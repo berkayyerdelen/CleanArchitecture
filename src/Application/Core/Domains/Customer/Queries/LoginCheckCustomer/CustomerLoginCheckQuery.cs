@@ -5,7 +5,6 @@ using Core.Comman.Exceptions;
 using Core.Comman.Interface;
 using Core.Comman.Security;
 using Core.Comman.Security.Jwt;
-using Core.Domains.Customer.Queries.CreateAccessToken;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

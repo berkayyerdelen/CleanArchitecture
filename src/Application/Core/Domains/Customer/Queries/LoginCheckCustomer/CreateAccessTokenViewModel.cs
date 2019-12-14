@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Domains.Customer.Queries.CreateAccessToken
+namespace Core.Domains.Customer.Queries.LoginCheckCustomer
 {
     public class CreateAccessTokenViewModel
     {

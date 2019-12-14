@@ -5,7 +5,6 @@ using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Category.Queries.GetCategoryList;
 using Core.Domains.Customer.Commands.CreateCustomer;
 using Core.Domains.Customer.Queries.CheckCustomerExist;
-using Core.Domains.Customer.Queries.CreateAccessToken;
 using Core.Domains.Customer.Queries.LoginCheckCustomer;
 using Core.Domains.CustomerOperationClaim.Queries.FindCustomerByMail;
 using Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims;
