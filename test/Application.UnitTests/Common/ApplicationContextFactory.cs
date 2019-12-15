@@ -17,13 +17,12 @@ namespace Application.UnitTests.Common
 
             context.Database.EnsureCreated();
 
-            context.Categories.AddRange(new[]
+            context.Products.AddRange(new[]
             {
-                new Entities.Category(){CategoryName = "TAK",Description = "TAK",Id = 1},
-                new Entities.Category(){CategoryName = "JA", Description = "JA", Id = 2},
-                new Entities.Category(){CategoryName = "DA", Description = "DA", Id = 3}
+                new Entities.Product() {Id = 1,ProductName = "MSI",UnitPrice = 3000},
+                new Entities.Product() {Id = 2,ProductName = "Dell",UnitPrice = 2000},
+                new Entities.Product() {Id = 3,ProductName = "Hp",UnitPrice = 1000},
             });
-            
             context.SaveChanges();
             return context;
         }

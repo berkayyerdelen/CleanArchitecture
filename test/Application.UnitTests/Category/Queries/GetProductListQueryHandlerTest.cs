@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using Application.UnitTests.Common;
 using AutoMapper;
+using Core.Comman.Interface.Caching;
 using Core.Domains.Category.Queries.GetCategoryList;
+using Core.Domains.Product.Queries.GetProductList;
 using Persistence;
 using Shouldly;
 using Xunit;
@@ -10,13 +12,14 @@ using Xunit;
 namespace Application.UnitTests.Category.Queries
 {
     [Collection("QueryCollection")]
-    public class GetCategoryDetailQueryHandler
+    public class GetProductListQueryHandlerTest
     {
         public readonly ApplicationDbContext _context;
-        public readonly IMapper _mapper;
+        private readonly IMapper _mapper;
+        
 
 
-        public GetCategoryDetailQueryHandler(QueryTestFixture fixture)
+        public GetProductListQueryHandlerTest(QueryTestFixture fixture)
         {
             _context = fixture.Context;
             _mapper = fixture.Mapper;
@@ -24,10 +27,10 @@ namespace Application.UnitTests.Category.Queries
         [Fact]
         public async Task Get_Category_List()
         {
-            var sut = new GetCategoryListQuery.Handler(_context, _mapper);
-            var result = await sut.Handle(new GetCategoryListQuery(), CancellationToken.None);
-            result.ShouldBeOfType<CategoryListViewModel>();
-            result.Categories.Count.ShouldBe(21);
+            var sut = new GetProductListQuery.Handler(_context, _mapper);
+            var result = await sut.Handle(new GetProductListQuery(), CancellationToken.None);
+            //result.ShouldBeOfType<CategoryListViewModel>();
+            result.Products.Count.ShouldBe(3);
         }
     }
 }

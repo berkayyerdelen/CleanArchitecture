@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Application.UnitTests.Common;
 using Core.Domains.Category.Commands.CreateCategory;
@@ -23,10 +24,9 @@ namespace Application.UnitTests.Category.Commands
 
             var result = await handler.Handle(command, CancellationToken.None);
 
-            var entity = _context.Categories.Find(result);
+            var count = _context.Categories.Count();
 
-            entity.ShouldNotBeNull();
-            entity.CategoryName.ShouldBe(command.CategoryName);
+            count.ShouldBe(1);
         }
     }
 }

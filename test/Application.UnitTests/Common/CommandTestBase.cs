@@ -11,6 +11,7 @@ namespace Application.UnitTests.Common
         {
             _context = ApplicationContextFactory.Create();
         }
+       
         public void Dispose()
         {
             ApplicationContextFactory.Destroy(_context);

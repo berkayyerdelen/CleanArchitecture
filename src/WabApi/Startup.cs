@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using AutoMapper;
-using Core.Comman.Behaviours;
 using Core.Comman.Infrastructure.AppUserSessionId;
 using Core.Comman.Infrastructure.AutoMapper;
 using Core.Comman.Infrastructure.Caching.CouchBase;
@@ -93,7 +93,7 @@ namespace WabApi
                 };
                 opt.Username = Configuration.GetValue<string>("Couchbase:ClusterId");
                 opt.Password = Configuration.GetValue<string>("Couchbase:ClusterPassword");
-                opt.UseSsl = false;
+               
             });
             services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"), opt => { });
             services.AddSwagger();
