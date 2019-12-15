@@ -1,8 +1,5 @@
-﻿using System.Threading.Tasks;
-using Core.Comman.Infrastructure.HangFire;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Builder;
+using WabApi.Infrastructure;
 
 namespace WabApi.Extensions
 {
@@ -12,43 +9,9 @@ namespace WabApi.Extensions
             this IApplicationBuilder app)
         {
             app.UseMiddleware<SecurityHeadersMiddleware>();
-            app.UseMiddleware<HanfireMiddleware>();
+            app.UseMiddleware<HangfireMiddleware>();
+            app.UseMiddleware<SerilogMiddleware>();
         }
     }
-    public class SecurityHeadersMiddleware
-    {
-        private readonly RequestDelegate next;
-        public SecurityHeadersMiddleware(RequestDelegate next) 
-            => this.next = next;
-        public async Task Invoke(HttpContext context)
-        {
-            context.Response.Headers.Add(
-                "Content-Security-Policy", "style-src 'self' " +
-                                           "https://stackpath.bootstrapcdn.com;" +
-                                           "frame-ancestors 'none'");
-            context.Response.Headers.Add(
-                "Feature-Policy", "camera 'none'");
-            context.Response.Headers.Add(
-                "X-Content-Type-Options", "nosniff");
-            await next(context);
-        }
 
-    }
-    public class HanfireMiddleware
-    {
-        private readonly RequestDelegate next;
-        private readonly IMediator _mediator;
-        public HanfireMiddleware(RequestDelegate next, IMediator mediator) 
-            => (_mediator, this.next) = (mediator, next);
-        
-        public async Task Invoke(HttpContext context)
-        {
-            //var fireandForgetJob = new FireAndForgetJob();
-            //var delayedJob = new DelayedJob();
-            var recurringJob = new RecurringJob(_mediator);
-            //var continuationsJob = new ContinuationsJob();
-            await next(context);
-        }
-
-    }
 }

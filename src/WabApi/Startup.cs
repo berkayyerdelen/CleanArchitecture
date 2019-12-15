@@ -118,7 +118,7 @@ namespace WabApi
             app.UseCors(builders => builders.WithOrigins("http://localhost:3000").AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseSerilogRequestLogging();
-            app.UseMiddleware<SerilogMiddleware>();
+            
 
             app.UseRouting();
 
