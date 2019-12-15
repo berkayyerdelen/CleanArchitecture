@@ -27,4 +27,8 @@
     <ProjectReference Include="..\..\src\Infrastructure\Persistence\Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domains\Product\Commands\" />
+  </ItemGroup>
+
 </Project>

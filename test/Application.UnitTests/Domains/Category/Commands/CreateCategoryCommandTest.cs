@@ -6,7 +6,7 @@ using Core.Domains.Category.Commands.CreateCategory;
 using Shouldly;
 using Xunit;
 
-namespace Application.UnitTests.Category.Commands
+namespace Application.UnitTests.Domains.Category.Commands
 {
     public class CreateCategoryCommandTest: CommandTestBase
     {
