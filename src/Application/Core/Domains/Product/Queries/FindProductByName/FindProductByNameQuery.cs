@@ -22,6 +22,10 @@ namespace Core.Domains.Product.Queries.FindProductByName
             private readonly IApplicationDbContext _context;
             private readonly IMapper _mapper;
 
+            public Handler(IApplicationDbContext context)
+            {
+                _context = context;
+            }
             public Handler(IApplicationDbContext context, IMapper mapper)
                 => (_context, _mapper) = (context, mapper);
 
