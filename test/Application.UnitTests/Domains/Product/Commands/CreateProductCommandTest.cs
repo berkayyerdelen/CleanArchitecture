@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.UnitTests.Common;
 using Core.Domains.Product.Commands.CreateProduct;
-using FluentAssertions;
 using Xunit;
 
 namespace Application.UnitTests.Domains.Product.Commands
