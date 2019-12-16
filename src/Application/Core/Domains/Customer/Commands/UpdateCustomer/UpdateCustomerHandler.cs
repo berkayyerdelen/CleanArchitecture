@@ -1,9 +1,6 @@
-﻿using System.Linq;
-using System.Security.Principal;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Core.Comman.Extensions;
 using Core.Comman.Interface;
 using Core.Comman.Security;
 using MediatR;

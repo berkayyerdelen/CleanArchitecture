@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 using Persistence;
 
 namespace Application.UnitTests.Common

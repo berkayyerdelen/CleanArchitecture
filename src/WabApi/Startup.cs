@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using AutoMapper;
 using Core.Comman.Infrastructure.AppUserSessionId;
@@ -26,9 +25,7 @@ using Microsoft.IdentityModel.Tokens;
 using WabApi.Extensions;
 using Core.Comman.Interface;
 using Core.Comman.Interface.Caching;
-using MediatR;
 using Microsoft.Extensions.Logging;
-using WabApi.Infrastructure;
 
 namespace WabApi
 {

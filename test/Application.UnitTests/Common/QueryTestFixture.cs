@@ -1,7 +1,5 @@
 ﻿using System;
 using AutoMapper;
-using Core.Comman.Interface.Caching;
-using Core.Domains.Category.Queries.GetCategoryList;
 using Persistence;
 using Xunit;
 

@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using Application.UnitTests.Common;
 using AutoMapper;
-using Core.Comman.Interface.Caching;
-using Core.Domains.Category.Queries.GetCategoryList;
 using Core.Domains.Product.Queries.GetProductList;
 using Persistence;
 using Shouldly;

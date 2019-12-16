@@ -2,7 +2,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using Core.Comman.Exceptions;
 using Core.Comman.Interface.AppUserSession;
 using Microsoft.AspNetCore.Http;
 
