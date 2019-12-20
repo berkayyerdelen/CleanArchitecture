@@ -25,6 +25,7 @@ using Microsoft.IdentityModel.Tokens;
 using WabApi.Extensions;
 using Core.Comman.Interface;
 using Core.Comman.Interface.Caching;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 namespace WabApi
@@ -95,6 +96,14 @@ namespace WabApi
             services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"), opt => { });
             services.AddSwagger();
 
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.Name = ".Main.Session";
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+            services.AddHttpContextAccessor();
         }
 
 
@@ -119,6 +128,7 @@ namespace WabApi
 
             app.UseRouting();
 
+            app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
 
