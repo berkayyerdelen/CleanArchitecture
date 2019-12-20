@@ -74,6 +74,7 @@ namespace Core.Comman.Security.Jwt
             };
             
            _httpContextAccessor.HttpContext.Response.Cookies.Append("JWT",jwt, option);
+           _httpContextAccessor.HttpContext.Session.SetString("JWT",jwt);
            
         }
     }
