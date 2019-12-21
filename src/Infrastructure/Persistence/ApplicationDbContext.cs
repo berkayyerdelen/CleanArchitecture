@@ -10,12 +10,10 @@ namespace Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
-        public ApplicationDbContext()
-        {
-
-        }
+      
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
+            ChangeTracker.AutoDetectChangesEnabled = false;
 
         }
         public DbSet<Category> Categories { get; set; }
