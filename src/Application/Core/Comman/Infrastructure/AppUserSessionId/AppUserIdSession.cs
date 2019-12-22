@@ -17,14 +17,12 @@ namespace Core.Comman.Infrastructure.AppUserSessionId
 
         public int JwtUserIdParse()
         {
-
-            JwtSecurityTokenHandler _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            JwtSecurityTokenHandler jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var jwt = _httpContextAccessor.HttpContext.Request.Cookies["jwt"];
             if (String.IsNullOrEmpty(jwt))
                 return 0;
-
-            var readableToken = _jwtSecurityTokenHandler.CanReadToken(jwt);
-            var parSecurityToken = _jwtSecurityTokenHandler.ReadToken(jwt) as JwtSecurityToken;
+            jwtSecurityTokenHandler.CanReadToken(jwt);
+            var parSecurityToken = jwtSecurityTokenHandler.ReadToken(jwt) as JwtSecurityToken;
             return Convert.ToInt32(parSecurityToken?.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
 
         }
