@@ -11,11 +11,13 @@ namespace Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
-        
+        public ApplicationDbContext()
+        {
+            
+        }
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
-            ChangeTracker.AutoDetectChangesEnabled = false;
-            ChangeTracker.LazyLoadingEnabled = false;
+         
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }

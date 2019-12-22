@@ -18,13 +18,14 @@ namespace Core.Comman.Security.Jwt
         private readonly TokenOptions _tokenOptions;
         private readonly DateTime _accessTokenExpiration;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
+        private ISession _session;
         public JwtHelper(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
             _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
             _httpContextAccessor = httpContextAccessor;
+          
         }
         public AccessToken CreateToken(Customer customer, List<OperationClaim> operationClaims)
         {
@@ -72,8 +73,9 @@ namespace Core.Comman.Security.Jwt
             {
                 Expires = DateTime.Now.AddMinutes(30)
             };
-            
-           _httpContextAccessor.HttpContext.Response.Cookies.Append("JWT",jwt, option);
+          
+            _httpContextAccessor.HttpContext.Session.SetString("JWT-s", jwt);
+            _httpContextAccessor.HttpContext.Response.Cookies.Append("JWT",jwt, option);
         }
     }
 }

@@ -96,13 +96,7 @@ namespace WabApi
             services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"), opt => { });
             services.AddSwagger();
 
-            services.AddSession(options =>
-            {
-                options.Cookie.HttpOnly = true;
-                options.Cookie.Name = ".Main.Session";
-                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-            });
+            services.AddSession(opt => { opt.IdleTimeout = TimeSpan.FromMinutes(30); });
             services.AddHttpContextAccessor();
         }
 
