@@ -37,6 +37,13 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "dotnet clean; dotnet build",
+            "args": [
+            ]
         }
     ]
 }

@@ -26,7 +26,7 @@ namespace Application.UnitTests.Domains.Category.Commands
 
             var count = _context.Categories.Count();
 
-            count.ShouldBe(1);
+            count.ShouldBe(2);
         }
     }
 }
