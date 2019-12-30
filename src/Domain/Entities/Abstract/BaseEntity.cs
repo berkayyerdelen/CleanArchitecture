@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Abstract
 {
-    public class BaseEntity<T>:ISoftDelete, IBaseEntity<T> 
+    public class BaseEntity<T>: IBaseEntity<T> 
     {
         [Key]
         [Column(Order = 1)]
