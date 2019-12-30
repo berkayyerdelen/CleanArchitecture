@@ -22,7 +22,7 @@ namespace Core.Domains.Product.Queries.GetProductList
                 return new ProductListViewModel
                 {
                     Products = await _context.Set<Entities.Product>()
-                        .ProjectTo<ProductLookupModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
+                        .ProjectTo<ProductLookupModel>(_mapper.ConfigurationProvider).AsNoTracking().ToListAsync(cancellationToken)
                 };
                 
             }

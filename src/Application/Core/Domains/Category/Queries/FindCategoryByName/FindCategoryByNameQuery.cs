@@ -24,7 +24,7 @@ namespace Core.Domains.Category.Queries.FindCategoryByName
                => (_mapper, _context) = (mapper, context);
            public async Task<FindCategoryByNameViewModel> Handle(FindCategoryByNameQuery request, CancellationToken cancellationToken)
             {
-               var entity = await _context.Set<Entities.Category>().ProjectTo<FindCategoryByNameLookupModel>(_mapper.ConfigurationProvider)
+               var entity = await _context.Set<Entities.Category>().AsNoTracking().ProjectTo<FindCategoryByNameLookupModel>(_mapper.ConfigurationProvider)
                    .SingleOrDefaultAsync(x => x.CategoryName == request.CategoryName,cancellationToken);
                if (entity is null)
                {

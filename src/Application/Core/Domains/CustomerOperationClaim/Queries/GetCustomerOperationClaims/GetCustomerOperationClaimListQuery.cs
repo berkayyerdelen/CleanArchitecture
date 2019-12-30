@@ -27,7 +27,7 @@ namespace Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims
                                  on operationclaim.Id equals customerOperationClaim.OperationClaimId
                              where customerOperationClaim.CustomerId == request.Customer.Id
                              select new Entities.OperationClaim { Id = operationclaim.Id, Name = operationclaim.Name };
-                var model = await result.ProjectTo<GetCustomerOperationClaimLookupModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
+                var model = await result.ProjectTo<GetCustomerOperationClaimLookupModel>(_mapper.ConfigurationProvider).AsNoTracking().ToListAsync(cancellationToken);
                
                 return new CustomerOperationClaimViewModel
                 {

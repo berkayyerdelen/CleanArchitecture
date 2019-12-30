@@ -31,7 +31,7 @@ namespace Core.Domains.Product.Queries.FindProductByName
 
             public async Task<FindProductByNameViewModel> Handle(FindProductByNameQuery request, CancellationToken cancellationToken)
             {
-                var entity = await _context.Set<Entities.Product>()
+                var entity = await _context.Set<Entities.Product>().AsNoTracking()
                     .ProjectTo<FindProductByNameLookupModel>(_mapper.ConfigurationProvider)
                     .SingleOrDefaultAsync(x => x.ProductName == request.ProductName, cancellationToken);
                 return new FindProductByNameViewModel()

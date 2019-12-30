@@ -22,7 +22,7 @@ namespace Core.Domains.Customer.Queries.GetCustomerInfo
                 => _context = context;
             public Task<string> Handle(GetCustomerInfoQuery request, CancellationToken cancellationToken)
             {
-                var customerName = _context.Set<Entities.Customer>().SingleOrDefaultAsync
+                var customerName = _context.Set<Entities.Customer>().AsNoTracking().SingleOrDefaultAsync
                     (x => x.Id == request.CustomerInfoLookModel.UserId, cancellationToken).Result;
                 return Task.FromResult(customerName.FullName);
 

@@ -20,7 +20,7 @@ namespace Core.Domains.OperationClaim.Queries
                 return new OperationClaimListViewModel()
                 {
                     OperationClaims = await _context.Set<Entities.OperationClaim>()
-                        .ProjectTo<OperationClaimLookupModel>(_mapper.ConfigurationProvider)
+                        .ProjectTo<OperationClaimLookupModel>(_mapper.ConfigurationProvider).AsNoTracking()
                         .ToListAsync(cancellationToken)
 
                 };

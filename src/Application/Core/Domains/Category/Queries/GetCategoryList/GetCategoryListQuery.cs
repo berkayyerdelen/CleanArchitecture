@@ -32,7 +32,7 @@ namespace Core.Domains.Category.Queries.GetCategoryList
                     var categoryList = new CategoryListViewModel
                     {
                         Categories = await _context.Set<Entities.Category>()
-                            .ProjectTo<CategoryLookupModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken)
+                            .ProjectTo<CategoryLookupModel>(_mapper.ConfigurationProvider).AsNoTracking().ToListAsync(cancellationToken)
                     };
                     await _couchBaseRepository.Add(categoryList, "CacheCategories");
 

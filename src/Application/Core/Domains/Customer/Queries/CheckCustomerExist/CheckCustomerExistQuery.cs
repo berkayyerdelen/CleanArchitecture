@@ -23,7 +23,7 @@ namespace Core.Domains.Customer.Queries.CheckCustomerExist
 
             public async Task<bool> Handle(CheckCustomerExistQuery request, CancellationToken cancellationToken)
             {
-                var customerExist =Task.FromResult(await _context.Set<Entities.Customer>().FirstOrDefaultAsync(x => x.Email == request.Email,cancellationToken)).Result;
+                var customerExist =Task.FromResult(await _context.Set<Entities.Customer>().AsNoTracking().FirstOrDefaultAsync(x => x.Email == request.Email,cancellationToken)).Result;
                    
                 return customerExist != null ? false : true;
             }
