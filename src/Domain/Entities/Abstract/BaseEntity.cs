@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Abstract
 {
-    public class BaseEntity<T>: IBaseEntity<T>
+    public class BaseEntity<T>:ISoftDelete, IBaseEntity<T> 
     {
         [Key]
         [Column(Order = 1)]
@@ -13,6 +13,7 @@ namespace Entities.Abstract
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
+        public bool IsDeleted { get;set;}
 
         public BaseEntity()
         {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.MSSQL;
 
 namespace Persistence.MSSQL.Migrations
 {
     [DbContext(typeof(MssqlApplicationDbContext))]
-    partial class MSSQLApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191230172515_softdelete")]
+    partial class softdelete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

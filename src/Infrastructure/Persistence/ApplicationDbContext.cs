@@ -4,7 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Core.Comman.Interface;
 using Entities;
+using Entities.Abstract;
 using Microsoft.EntityFrameworkCore;
+
 
 
 namespace Persistence
@@ -30,6 +32,17 @@ namespace Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            
+            modelBuilder.Entity<Category>().HasQueryFilter(x => !x.IsDeleted);
+            modelBuilder.Entity<Customer>().HasQueryFilter(x => !x.IsDeleted);
+            modelBuilder.Entity<CustomerDetails>().HasQueryFilter(x => !x.IsDeleted);
+            modelBuilder.Entity<CustomerOperationClaim>().HasQueryFilter(x => !x.IsDeleted);
+            modelBuilder.Entity<OperationClaim>().HasQueryFilter(x => !x.IsDeleted);
+            modelBuilder.Entity<Order>().HasQueryFilter(x => !x.IsDeleted);
+            modelBuilder.Entity<Product>().HasQueryFilter(x => !x.IsDeleted);
+           // modelBuilder.Entity(typeof(BaseEntity<>)).HasQueryFilter(x=> EF.Property<bool>(x,"IsDeleted")==false);
+           
+            
         }
         public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -88,11 +101,11 @@ namespace Persistence
                     }
                 }
             }
-            foreach (var auditEntry in auditEntries.Where(_ => !_.HasTemporaryProperties))
+            foreach (var auditEntry in auditEntries.Where(x => !x.HasTemporaryProperties))
             {
                 Audits.Add(auditEntry.ToAudit());
             }
-            return auditEntries.Where(_ => _.HasTemporaryProperties).ToList();
+            return auditEntries.Where(x => x.HasTemporaryProperties).ToList();
         }
 
         private Task OnAfterSaveChanges(List<AuditEntry> auditEntries)
@@ -117,5 +130,7 @@ namespace Persistence
             }
             return SaveChangesAsync();
         }
+
+        
     }
 }
