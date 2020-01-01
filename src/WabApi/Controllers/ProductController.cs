@@ -1,10 +1,13 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using Core.Domains.CustomerOperationClaim.Queries.GetCustomerOperationClaims;
 using Core.Domains.Product.Commands.CreateProduct;
 using Core.Domains.Product.Commands.DeleteProduct;
 using Core.Domains.Product.Commands.UpdateProduct;
 using Core.Domains.Product.Queries.FindProductByName;
 using Core.Domains.Product.Queries.GetProductList;
+using Core.Domains.Product.Queries.GetProductsByCategory;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -48,5 +51,10 @@ namespace WabApi.Controllers
         public async Task<ProductListViewModel> GetProductList(CancellationToken ct)
             => await _mediator.Send(new GetProductListQuery(), ct);
 
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("getProductsbyCategory")]
+        public async Task<List<GetProductsByCategoryListViewModel>> GetProductsByCategory(CancellationToken ct)
+            => await _mediator.Send(new GetProductsByCategoryQuery(), ct);
     }
 }
