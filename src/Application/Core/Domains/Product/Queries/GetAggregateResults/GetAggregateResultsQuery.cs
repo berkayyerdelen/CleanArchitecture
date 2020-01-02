@@ -21,6 +21,7 @@ namespace Core.Domains.Product.Queries.GetAggregateResults
               return await (from c in _context.Set<Entities.Category>()
                   join p in _context.Set<Entities.Product>() on
                       c.Id equals p.CategoryId
+                      where c.Id> 5
                   select new
                   {
                       p.UnitPrice,
