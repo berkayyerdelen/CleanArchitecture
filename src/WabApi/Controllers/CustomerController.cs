@@ -17,10 +17,8 @@ namespace WabApi.Controllers
         private readonly IMediator _mediator;
 
         public CustomerController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
+            => _mediator = mediator;
+        
         [HttpPost("CreateCustomer")]
         [Authorize(Roles = "Admin")]
         public async Task<Unit> CreateCustomer(CreateCustomerCommand request, CancellationToken ct)
@@ -36,7 +34,7 @@ namespace WabApi.Controllers
         public async Task<Unit> RemoveCustomer(DeleteCustomerCommandHandler request, CancellationToken ct)
             => await _mediator.Send(request, ct);
 
-        [HttpDelete("UpdateCustomer")]
+        [HttpPut("UpdateCustomer")]
         [Authorize(Roles = "Admin")]
         public async Task<Unit> UpdateCustomer(UpdateCustomerCommand request, CancellationToken ct)
             => await _mediator.Send(request, ct);

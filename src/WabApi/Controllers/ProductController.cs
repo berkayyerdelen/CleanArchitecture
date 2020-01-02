@@ -8,6 +8,7 @@ using Core.Domains.Product.Commands.UpdateProduct;
 using Core.Domains.Product.Queries.FindProductByName;
 using Core.Domains.Product.Queries.GetProductList;
 using Core.Domains.Product.Queries.GetProductsByCategory;
+using Core.Domains.Product.Queries.SumOfProductsByCategory;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -56,5 +57,12 @@ namespace WabApi.Controllers
         [Route("getProductsbyCategory")]
         public async Task<List<GetProductsByCategoryListViewModel>> GetProductsByCategory(CancellationToken ct)
             => await _mediator.Send(new GetProductsByCategoryQuery(), ct);
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("SumProductsPricebyCategory")]
+        public async Task<List<SumOfProductViewModal>> SumProductsPriceByCategory(CancellationToken ct)
+            => await _mediator.Send(new SumOfProductsByCategoryQuery(), ct);
+
     }
 }
