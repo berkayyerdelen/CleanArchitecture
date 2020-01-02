@@ -6,6 +6,7 @@ using Core.Domains.Product.Commands.CreateProduct;
 using Core.Domains.Product.Commands.DeleteProduct;
 using Core.Domains.Product.Commands.UpdateProduct;
 using Core.Domains.Product.Queries.FindProductByName;
+using Core.Domains.Product.Queries.GetAggregateResults;
 using Core.Domains.Product.Queries.GetProductList;
 using Core.Domains.Product.Queries.GetProductsByCategory;
 using Core.Domains.Product.Queries.SumOfProductsByCategory;
@@ -63,6 +64,13 @@ namespace WabApi.Controllers
         [Route("SumProductsPricebyCategory")]
         public async Task<List<SumOfProductViewModal>> SumProductsPriceByCategory(CancellationToken ct)
             => await _mediator.Send(new SumOfProductsByCategoryQuery(), ct);
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("AggregateResultsforProduts")]
+        public async Task<List<GetAggregateResultsViewModel>> AggregateResultsforProduts(CancellationToken ct)
+            => await _mediator.Send(new GetAggregateResultsQuery(), ct);
 
     }
 }

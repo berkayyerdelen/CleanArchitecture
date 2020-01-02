@@ -27,7 +27,7 @@ namespace Core.Domains.Product.Queries.SumOfProductsByCategory
                         c.CategoryName
                     }
                     into x
-                    group x by new {x.CategoryName, x.UnitPrice}
+                    group x by new {x.CategoryName}
                     into g
                     select new SumOfProductViewModal
                     {
