@@ -11,9 +11,8 @@ namespace Core.Domains.Customer.Queries.GetCustomerInfo
         public GetCustomerInfoLookModel CustomerInfoLookModel { get; set; }
 
         public GetCustomerInfoQuery(GetCustomerInfoLookModel customerInfoLookModel)
-        {
-            CustomerInfoLookModel = customerInfoLookModel;
-        }
+            => CustomerInfoLookModel = customerInfoLookModel;
+        
         public class Handler : IRequestHandler<GetCustomerInfoQuery, string>
         {
             private readonly IApplicationDbContext _context;

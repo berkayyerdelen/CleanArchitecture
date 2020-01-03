@@ -11,11 +11,9 @@ namespace Core.Domains.CustomerOperationClaim.Queries.FindCustomerByMail
     public class FindCustomerByMailQuery : IRequest<FindCustomerByMailViewModel>
     {
         public string Email { get; set; }
-
-        public FindCustomerByMailQuery(string email)
-        {
-            Email = email;
-        }
+        public FindCustomerByMailQuery(string email) 
+            => Email = email;
+       
         public class Handler : IRequestHandler<FindCustomerByMailQuery, FindCustomerByMailViewModel>
         {
             private readonly IApplicationDbContext _context;

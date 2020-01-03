@@ -20,9 +20,8 @@ namespace WabApi.Infrastructure
         readonly RequestDelegate _next;
 
         public SerilogMiddleware(RequestDelegate next)
-        {
-            _next = next ?? throw new ArgumentNullException(nameof(next));
-        }
+            => _next = next ?? throw new ArgumentNullException(nameof(next));
+
 
         // ReSharper disable once UnusedMember.Global
         public async Task Invoke(HttpContext httpContext)
@@ -68,15 +67,10 @@ namespace WabApi.Infrastructure
 
             return result;
         }
-
         static double GetElapsedMilliseconds(long start, long stop)
-        {
-            return (stop - start) * 1000 / (double)Stopwatch.Frequency;
-        }
-
+            => (stop - start) * 1000 / (double)Stopwatch.Frequency;
         static string GetPath(HttpContext httpContext)
-        {
-            return httpContext.Features.Get<IHttpRequestFeature>()?.RawTarget ?? httpContext.Request.Path.ToString();
-        }
+        => httpContext.Features.Get<IHttpRequestFeature>()?.RawTarget ?? httpContext.Request.Path.ToString();
+
     }
 }
