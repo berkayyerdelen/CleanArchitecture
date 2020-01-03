@@ -11,7 +11,7 @@ Use these instructions to get the project up and running.
 You will need the following tools:
 
 * [Visual Studio Code or Visual Studio 2019](https://visualstudio.microsoft.com/vs/) (version 16.3 or later)
-* [.NET Core SDK 3](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+* [.NET Core SDK 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 * [Couchbase Server 6.0.0 Community](https://www.couchbase.com/downloads)
 * [Seq 5.1](https://datalust.co/download)
 * [MongoDB 4.2.1](https://www.mongodb.com/download-center/community)
