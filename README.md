@@ -44,9 +44,9 @@ Follow these steps to get your development environment set up:
 
 
 ## Technologies
-* .NET Core 3
-* ASP.NET Core 3
-* Entity Framework Core 3
+* .NET Core 3.1
+* ASP.NET Core 3.1
+* Entity Framework Core 3.1
 * CouchBase Server 6.0.0
 * Seq 5.1
 * MongoDB 4.2.1
