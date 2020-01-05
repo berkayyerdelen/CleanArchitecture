@@ -93,7 +93,8 @@ namespace WabApi
                 opt.Password = Configuration.GetValue<string>("Couchbase:ClusterPassword");
                
             });
-            services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"), opt => { });
+            services.AddDistributedCouchbaseCache(Configuration.GetValue<string>("Couchbase:DistributedCouchbaseCache"),
+                opt => { opt.LifeSpan = TimeSpan.FromMinutes(30);});
             services.AddSwagger();
 
             services.AddSession(opt => { opt.IdleTimeout = TimeSpan.FromMinutes(30); });
