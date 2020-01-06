@@ -5,6 +5,7 @@ using Core.Domains.Category.Commands.DeleteCategory;
 using Core.Domains.Category.Commands.UpdateCategory;
 using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Category.Queries.GetCategoryList;
+using Core.Domains.Category.Queries.GetCategoryListExcept;
 using Core.Domains.Category.Queries.GetCategoryListExistWithProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -53,6 +54,12 @@ namespace WabApi.Controllers
         [AllowAnonymous]
         public async Task<GetCategoryListExistsWithProductViewModel> CategoryExistWithProduct(CancellationToken ct)
             => await _mediator.Send(new GetCategoryListExistsWithProductQuery(), ct);
+
+        [HttpGet]
+        [Route("CategoryExceptProduct")]
+        [AllowAnonymous]
+        public async Task<GetCategoryListExceptViewModel> CategoryExceptProduct(CancellationToken ct)
+            => await _mediator.Send(new GetCategoryListExceptThanExpectedQuery(), ct);
 
     }
 }
