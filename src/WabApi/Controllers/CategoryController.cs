@@ -5,6 +5,7 @@ using Core.Domains.Category.Commands.DeleteCategory;
 using Core.Domains.Category.Commands.UpdateCategory;
 using Core.Domains.Category.Queries.FindCategoryByName;
 using Core.Domains.Category.Queries.GetCategoryList;
+using Core.Domains.Category.Queries.GetCategoryListExistWithProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +47,12 @@ namespace WabApi.Controllers
         [AllowAnonymous]
         public async Task<FindCategoryByNameViewModel> GetCategoryInfo(string name, CancellationToken ct)
             => await _mediator.Send(new FindCategoryByNameQuery(name), ct);
+
+        [HttpGet]
+        [Route("CategoryExistWithProduct")]
+        [AllowAnonymous]
+        public async Task<GetCategoryListExistsWithProductViewModel> CategoryExistWithProduct(CancellationToken ct)
+            => await _mediator.Send(new GetCategoryListExistsWithProductQuery(), ct);
 
     }
 }
