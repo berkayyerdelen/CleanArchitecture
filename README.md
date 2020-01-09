@@ -67,6 +67,7 @@ Follow these steps to get your development environment set up:
 -   Unit tests will be planned to do using FluentAssertions
 -	RabbitMQ as a message queue with Masstransit
 -   Building service, database and UI using Docker from scratch
+-    SPA  =  Angular ?? Vue ?? Svelte;
 
 
 
